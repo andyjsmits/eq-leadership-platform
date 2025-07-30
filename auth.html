@@ -205,9 +205,100 @@
         </div>
     </footer>
 
-    <!-- Firebase SDKs -->
+    <!-- Firebase SDKs from CDN -->
     <script type="module">
-        import { auth, signIn, signUp, signInWithGoogle, observeAuthState } from './firebase-config.js';
+        // Import Firebase modules from CDN
+        import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js';
+        import { 
+            getAuth, 
+            createUserWithEmailAndPassword, 
+            signInWithEmailAndPassword,
+            signInWithPopup,
+            GoogleAuthProvider,
+            onAuthStateChanged
+        } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js';
+        import { 
+            getFirestore, 
+            doc, 
+            setDoc, 
+            getDoc 
+        } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js';
+
+        // Firebase configuration
+        const firebaseConfig = {
+            apiKey: "AIzaSyDGVQsKrQscmvqXUDRl15cnltW9IPFMp9o",
+            authDomain: "eqcq-83bf3.firebaseapp.com",
+            projectId: "eqcq-83bf3",
+            storageBucket: "eqcq-83bf3.firebasestorage.app",
+            messagingSenderId: "574429234092",
+            appId: "1:574429234092:web:a061ed1c58995599687009",
+            measurementId: "G-PGCWFCQ3SY"
+        };
+
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const auth = getAuth(app);
+        const db = getFirestore(app);
+
+        // Authentication functions
+        const signUp = async (email, password, displayName) => {
+            try {
+                const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+                const user = userCredential.user;
+                
+                await setDoc(doc(db, 'users', user.uid), {
+                    displayName: displayName,
+                    email: email,
+                    createdAt: new Date(),
+                    completedExercises: [],
+                    eqAssessmentScore: null,
+                    currentFocus: 'self-awareness'
+                });
+                
+                return { success: true, user };
+            } catch (error) {
+                return { success: false, error: error.message };
+            }
+        };
+
+        const signIn = async (email, password) => {
+            try {
+                const userCredential = await signInWithEmailAndPassword(auth, email, password);
+                return { success: true, user: userCredential.user };
+            } catch (error) {
+                return { success: false, error: error.message };
+            }
+        };
+
+        const signInWithGoogle = async () => {
+            try {
+                const provider = new GoogleAuthProvider();
+                const result = await signInWithPopup(auth, provider);
+                const user = result.user;
+                
+                const userRef = doc(db, 'users', user.uid);
+                const userSnap = await getDoc(userRef);
+                
+                if (!userSnap.exists()) {
+                    await setDoc(userRef, {
+                        displayName: user.displayName || 'User',
+                        email: user.email,
+                        createdAt: new Date(),
+                        completedExercises: [],
+                        eqAssessmentScore: null,
+                        currentFocus: 'self-awareness'
+                    });
+                }
+                
+                return { success: true, user };
+            } catch (error) {
+                return { success: false, error: error.message };
+            }
+        };
+
+        const observeAuthState = (callback) => {
+            return onAuthStateChanged(auth, callback);
+        };
         
         // Tab switching
         document.getElementById('signin-tab').addEventListener('click', () => {
