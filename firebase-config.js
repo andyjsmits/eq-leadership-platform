@@ -2,20 +2,23 @@
 // Replace these values with your actual Firebase config from the console
 
 const firebaseConfig = {
-  apiKey: "your-api-key-here",
-  authDomain: "your-project-id.firebaseapp.com",
-  projectId: "your-project-id",
-  storageBucket: "your-project-id.appspot.com",
-  messagingSenderId: "your-sender-id",
-  appId: "your-app-id"
+  apiKey: "AIzaSyDGVQsKrQscmvqXUDRl15cnltW9IPFMp9o",
+  authDomain: "eqcq-83bf3.firebaseapp.com",
+  projectId: "eqcq-83bf3",
+  storageBucket: "eqcq-83bf3.firebasestorage.app",
+  messagingSenderId: "574429234092",
+  appId: "1:574429234092:web:a061ed1c58995599687009",
+  measurementId: "G-PGCWFCQ3SY"
 };
 
 // Initialize Firebase
 import { initializeApp } from 'firebase/app';
 import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, onAuthStateChanged } from 'firebase/auth';
 import { getFirestore, doc, setDoc, getDoc } from 'firebase/firestore';
+import { getAnalytics } from "firebase/analytics";
 
 const app = initializeApp(firebaseConfig);
+const analytics = getAnalytics(app);
 export const auth = getAuth(app);
 export const db = getFirestore(app);
 

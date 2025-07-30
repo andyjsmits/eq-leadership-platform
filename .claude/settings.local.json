@@ -10,7 +10,9 @@
       "Bash(npm init:*)",
       "Bash(npm install)",
       "Bash(npm install:*)",
-      "Bash(npm:*)"
+      "Bash(npm:*)",
+      "Bash(git pull:*)",
+      "Bash(git config:*)"
     ],
     "deny": []
   }
