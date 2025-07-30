@@ -1,0 +1,895 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your EQ Assessment Results - EQ Leadership Platform</title>
+    <meta name="description" content="View your comprehensive Emotional Intelligence assessment results and personalized development recommendations.">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .results-container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+        
+        .results-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        
+        .results-header h1 {
+            color: var(--primary-color);
+            margin-bottom: 10px;
+        }
+        
+        .completion-date {
+            color: var(--text-light);
+            font-size: 0.9rem;
+        }
+        
+        .results-section {
+            background: white;
+            border-radius: 12px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .section-header {
+            border-bottom: 2px solid var(--primary-color);
+            padding-bottom: 15px;
+            margin-bottom: 25px;
+        }
+        
+        .section-header h2 {
+            color: var(--primary-color);
+            margin: 0;
+        }
+        
+        .overall-score {
+            text-align: center;
+            padding: 30px;
+            background: linear-gradient(135deg, var(--primary-color), #0056b3);
+            color: white;
+            border-radius: 12px;
+            margin-bottom: 30px;
+        }
+        
+        .overall-score h3 {
+            margin: 0 0 10px 0;
+        }
+        
+        .overall-score .score {
+            font-size: 3rem;
+            font-weight: 700;
+            margin: 10px 0;
+        }
+        
+        .overall-score .interpretation {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+        
+        .domain-scores {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .domain-card {
+            border: 2px solid #e0e0e0;
+            border-radius: 12px;
+            padding: 20px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+        
+        .domain-card.high {
+            border-color: #28a745;
+            background: #f8fff9;
+        }
+        
+        .domain-card.moderate {
+            border-color: #ffc107;
+            background: #fffdf5;
+        }
+        
+        .domain-card.developing {
+            border-color: #fd7e14;
+            background: #fffaf7;
+        }
+        
+        .domain-card.low {
+            border-color: #dc3545;
+            background: #fff8f8;
+        }
+        
+        .domain-card h4 {
+            margin: 0 0 10px 0;
+            color: var(--text-dark);
+        }
+        
+        .domain-score {
+            font-size: 2rem;
+            font-weight: 700;
+            margin: 10px 0;
+        }
+        
+        .domain-card.high .domain-score {
+            color: #28a745;
+        }
+        
+        .domain-card.moderate .domain-score {
+            color: #ffc107;
+        }
+        
+        .domain-card.developing .domain-score {
+            color: #fd7e14;
+        }
+        
+        .domain-card.low .domain-score {
+            color: #dc3545;
+        }
+        
+        .domain-level {
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+        
+        .domain-description {
+            font-size: 0.9rem;
+            color: var(--text-light);
+            line-height: 1.4;
+        }
+        
+        .recommendations-grid {
+            display: grid;
+            gap: 20px;
+        }
+        
+        .recommendation-card {
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            padding: 20px;
+        }
+        
+        .recommendation-card.priority-high {
+            border-left: 4px solid #dc3545;
+        }
+        
+        .recommendation-card.priority-medium {
+            border-left: 4px solid #ffc107;
+        }
+        
+        .recommendation-card.priority-low {
+            border-left: 4px solid #28a745;
+        }
+        
+        .recommendation-card h4 {
+            margin: 0 0 10px 0;
+            color: var(--text-dark);
+        }
+        
+        .recommendation-exercises {
+            margin-top: 15px;
+        }
+        
+        .exercise-link {
+            display: inline-block;
+            background: var(--primary-light);
+            color: var(--primary-color);
+            padding: 6px 12px;
+            border-radius: 20px;
+            text-decoration: none;
+            margin: 5px 5px 5px 0;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+        }
+        
+        .exercise-link:hover {
+            background: var(--primary-color);
+            color: white;
+        }
+        
+        .reflection-summary {
+            background: #f8f9fa;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+        
+        .reflection-summary h4 {
+            color: var(--text-dark);
+            margin: 0 0 15px 0;
+        }
+        
+        .reflection-text {
+            font-style: italic;
+            color: var(--text-light);
+            line-height: 1.6;
+            margin-bottom: 10px;
+        }
+        
+        .download-section {
+            background: #f8f9fa;
+            border-radius: 12px;
+            padding: 30px;
+            text-align: center;
+        }
+        
+        .download-section h3 {
+            color: var(--text-dark);
+            margin-bottom: 20px;
+        }
+        
+        .download-buttons {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        .download-button {
+            background: var(--primary-color);
+            color: white;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .download-button:hover {
+            background: #0056b3;
+        }
+        
+        .download-button.secondary {
+            background: #6c757d;
+        }
+        
+        .download-button.secondary:hover {
+            background: #5a6268;
+        }
+        
+        .action-buttons {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            margin-top: 30px;
+            flex-wrap: wrap;
+        }
+        
+        .action-button {
+            background: var(--secondary-color);
+            color: white;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        
+        .action-button:hover {
+            background: #e65100;
+        }
+        
+        .loading-spinner {
+            text-align: center;
+            padding: 60px;
+        }
+        
+        .spinner {
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid var(--primary-color);
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 20px;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        .error-message {
+            text-align: center;
+            padding: 60px 20px;
+            color: #dc3545;
+        }
+        
+        .hidden {
+            display: none;
+        }
+        
+        @media (max-width: 768px) {
+            .domain-scores {
+                grid-template-columns: 1fr;
+            }
+            
+            .download-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .action-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-brand">
+                <a href="index.html"><h2>EQ Leadership</h2></a>
+            </div>
+            <div class="nav-links">
+                <a href="index.html#how-it-works">How It Works</a>
+                <a href="index.html#pricing">Pricing</a>
+                <a href="eq-toolkit.html">My EQ Toolkit</a>
+                <a href="auth.html">Sign In</a>
+            </div>
+            <div class="mobile-menu-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Loading State -->
+    <div id="loading" class="loading-spinner">
+        <div class="spinner"></div>
+        <p>Loading your results...</p>
+    </div>
+
+    <!-- Error State -->
+    <div id="error" class="error-message hidden">
+        <h2>Unable to Load Results</h2>
+        <p>There was an error loading your assessment results. Please try again or contact support.</p>
+        <a href="eq-assessment.html" class="action-button">Retake Assessment</a>
+    </div>
+
+    <!-- Results Content -->
+    <div id="results-content" class="hidden">
+        <div class="container">
+            <div class="results-container">
+                <!-- Results Header -->
+                <div class="results-header">
+                    <h1>Your EQ Assessment Results</h1>
+                    <p class="completion-date" id="completion-date"></p>
+                </div>
+
+                <!-- Overall Score -->
+                <div class="overall-score" id="overall-score">
+                    <h3>Overall EQ Score</h3>
+                    <div class="score" id="overall-score-value">--</div>
+                    <div class="interpretation" id="overall-interpretation">--</div>
+                </div>
+
+                <!-- Domain Scores -->
+                <div class="results-section">
+                    <div class="section-header">
+                        <h2>Domain Breakdown</h2>
+                    </div>
+                    <div class="domain-scores" id="domain-scores">
+                        <!-- Domain cards will be inserted here -->
+                    </div>
+                </div>
+
+                <!-- Recommendations -->
+                <div class="results-section">
+                    <div class="section-header">
+                        <h2>Personalized Development Recommendations</h2>
+                    </div>
+                    <div class="recommendations-grid" id="recommendations">
+                        <!-- Recommendations will be inserted here -->
+                    </div>
+                </div>
+
+                <!-- Reflection Summary -->
+                <div class="results-section">
+                    <div class="section-header">
+                        <h2>Your Reflections</h2>
+                    </div>
+                    <div id="reflection-summaries">
+                        <!-- Reflection summaries will be inserted here -->
+                    </div>
+                </div>
+
+                <!-- Download Section -->
+                <div class="results-section">
+                    <div class="download-section">
+                        <h3>Download Your Results</h3>
+                        <p>Save your complete assessment report for future reference</p>
+                        <div class="download-buttons">
+                            <button class="download-button" id="download-pdf">
+                                📄 Download PDF Report
+                            </button>
+                            <button class="download-button secondary" id="download-markdown">
+                                📝 Download Markdown
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Action Buttons -->
+                <div class="action-buttons">
+                    <a href="eq-toolkit.html" class="action-button">Explore EQ Exercises</a>
+                    <a href="eq-assessment.html" class="action-button">Retake Assessment</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Firebase and Results Logic -->
+    <script type="module">
+        // Import Firebase modules from CDN
+        import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js';
+        import { 
+            getAuth, 
+            onAuthStateChanged
+        } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js';
+        import { 
+            getFirestore, 
+            doc, 
+            getDoc
+        } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js';
+
+        // Firebase configuration
+        const firebaseConfig = {
+            apiKey: "AIzaSyDGVQsKrQscmvqXUDRl15cnltW9IPFMp9o",
+            authDomain: "eqcq-83bf3.firebaseapp.com",
+            projectId: "eqcq-83bf3",
+            storageBucket: "eqcq-83bf3.firebasestorage.app",
+            messagingSenderId: "574429234092",
+            appId: "1:574429234092:web:a061ed1c58995599687009",
+            measurementId: "G-PGCWFCQ3SY"
+        };
+
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const auth = getAuth(app);
+        const db = getFirestore(app);
+
+        // State
+        let assessmentData = null;
+        let currentUser = null;
+
+        // DOM Elements
+        const loading = document.getElementById('loading');
+        const error = document.getElementById('error');
+        const resultsContent = document.getElementById('results-content');
+
+        // Exercise recommendations mapping
+        const exerciseRecommendations = {
+            selfAwareness: [
+                { name: "Daily Weather Report", file: "self_awareness_exercises.html#daily-weather-report" },
+                { name: "Trigger Tracking", file: "self_awareness_exercises.html#trigger-tracking" },
+                { name: "Values Clarification", file: "self_awareness_exercises.html#values-clarification" },
+                { name: "Body Awareness Check-In", file: "self_awareness_exercises.html#body-awareness" }
+            ],
+            selfManagement: [
+                { name: "Pause and Breathe", file: "self_management_exercises.html#pause-breathe" },
+                { name: "Reframe Challenge", file: "self_management_exercises.html#reframe-challenge" },
+                { name: "Stress Response Planning", file: "self_management_exercises.html#stress-response" },
+                { name: "Emotional Regulation Toolkit", file: "self_management_exercises.html#regulation-toolkit" }
+            ],
+            socialAwareness: [
+                { name: "Active Listening Practice", file: "social_awareness_exercises.html#active-listening" },
+                { name: "Cultural Perspective Taking", file: "social_awareness_exercises.html#cultural-perspective" },
+                { name: "Nonverbal Cue Reading", file: "social_awareness_exercises.html#nonverbal-cues" },
+                { name: "Team Dynamics Mapping", file: "social_awareness_exercises.html#team-dynamics" }
+            ],
+            relationshipManagement: [
+                { name: "Conflict Resolution Practice", file: "relationship_management_exercises.html#conflict-resolution" },
+                { name: "Trust Building Activities", file: "relationship_management_exercises.html#trust-building" },
+                { name: "Feedback Delivery Framework", file: "relationship_management_exercises.html#feedback-delivery" },
+                { name: "Inclusive Leadership", file: "relationship_management_exercises.html#inclusive-leadership" }
+            ]
+        };
+
+        // Authentication Check and Load Results
+        onAuthStateChanged(auth, async (user) => {
+            if (user) {
+                currentUser = user;
+                await loadAssessmentResults();
+            } else {
+                window.location.href = 'auth.html';
+            }
+        });
+
+        // Load Assessment Results
+        async function loadAssessmentResults() {
+            try {
+                const urlParams = new URLSearchParams(window.location.search);
+                const assessmentId = urlParams.get('assessment') || currentUser.uid;
+
+                const docRef = doc(db, 'assessments', assessmentId);
+                const docSnap = await getDoc(docRef);
+
+                if (docSnap.exists()) {
+                    assessmentData = docSnap.data();
+                    displayResults();
+                } else {
+                    showError();
+                }
+            } catch (err) {
+                console.error('Error loading results:', err);
+                showError();
+            }
+        }
+
+        // Display Results
+        function displayResults() {
+            loading.classList.add('hidden');
+            resultsContent.classList.remove('hidden');
+
+            displayCompletionDate();
+            displayOverallScore();
+            displayDomainScores();
+            displayRecommendations();
+            displayReflections();
+            setupDownloads();
+        }
+
+        // Display Completion Date
+        function displayCompletionDate() {
+            const completionDate = document.getElementById('completion-date');
+            if (assessmentData.completedAt) {
+                const date = assessmentData.completedAt.toDate();
+                completionDate.textContent = `Completed on ${date.toLocaleDateString('en-US', {
+                    year: 'numeric',
+                    month: 'long',
+                    day: 'numeric'
+                })}`;
+            }
+        }
+
+        // Display Overall Score
+        function displayOverallScore() {
+            const scoreValue = document.getElementById('overall-score-value');
+            const interpretation = document.getElementById('overall-interpretation');
+
+            const overall = assessmentData.scores.overallAverage.toFixed(1);
+            scoreValue.textContent = overall;
+            interpretation.textContent = getOverallInterpretation(overall);
+        }
+
+        // Display Domain Scores
+        function displayDomainScores() {
+            const container = document.getElementById('domain-scores');
+            const domains = [
+                { key: 'selfAwareness', name: 'Self-Awareness' },
+                { key: 'selfManagement', name: 'Self-Management' },
+                { key: 'socialAwareness', name: 'Social Awareness' },
+                { key: 'relationshipManagement', name: 'Relationship Management' }
+            ];
+
+            domains.forEach(domain => {
+                const score = assessmentData.scores[domain.key];
+                const card = createDomainCard(domain.name, score);
+                container.appendChild(card);
+            });
+        }
+
+        // Create Domain Card
+        function createDomainCard(name, score) {
+            const card = document.createElement('div');
+            card.className = `domain-card ${getDomainLevel(score).toLowerCase()}`;
+            
+            const level = getDomainLevel(score);
+            const interpretation = getDomainInterpretation(score);
+            
+            card.innerHTML = `
+                <h4>${name}</h4>
+                <div class="domain-score">${score}</div>
+                <div class="domain-level">${level} EQ</div>
+                <div class="domain-description">${interpretation}</div>
+            `;
+            
+            return card;
+        }
+
+        // Display Recommendations
+        function displayRecommendations() {
+            const container = document.getElementById('recommendations');
+            const recommendations = generateRecommendations();
+
+            recommendations.forEach(rec => {
+                const card = document.createElement('div');
+                card.className = `recommendation-card priority-${rec.priority}`;
+                
+                const exerciseLinks = rec.exercises.map(exercise => 
+                    `<a href="${exercise.file}" class="exercise-link">${exercise.name}</a>`
+                ).join('');
+
+                card.innerHTML = `
+                    <h4>${rec.domain}</h4>
+                    <p>${rec.description}</p>
+                    <p><strong>Recommendation:</strong> ${rec.recommendation}</p>
+                    <div class="recommendation-exercises">
+                        <strong>Suggested Exercises:</strong><br>
+                        ${exerciseLinks}
+                    </div>
+                `;
+                
+                container.appendChild(card);
+            });
+        }
+
+        // Generate Recommendations
+        function generateRecommendations() {
+            const recommendations = [];
+            const domains = [
+                { key: 'selfAwareness', name: 'Self-Awareness' },
+                { key: 'selfManagement', name: 'Self-Management' },
+                { key: 'socialAwareness', name: 'Social Awareness' },
+                { key: 'relationshipManagement', name: 'Relationship Management' }
+            ];
+
+            domains.forEach(domain => {
+                const score = assessmentData.scores[domain.key];
+                const recommendation = getDomainRecommendation(domain.key, score);
+                
+                recommendations.push({
+                    domain: domain.name,
+                    score: score,
+                    priority: getPriority(score),
+                    description: getDomainInterpretation(score),
+                    recommendation: recommendation,
+                    exercises: exerciseRecommendations[domain.key].slice(0, 3) // Top 3 exercises
+                });
+            });
+
+            // Sort by priority (high first)
+            return recommendations.sort((a, b) => {
+                const priorities = { high: 3, medium: 2, low: 1 };
+                return priorities[b.priority] - priorities[a.priority];
+            });
+        }
+
+        // Display Reflections
+        function displayReflections() {
+            const container = document.getElementById('reflection-summaries');
+            const reflections = [
+                { key: 'reflection_sa', title: 'Self-Awareness Reflection' },
+                { key: 'reflection_sm', title: 'Self-Management Reflection' },
+                { key: 'reflection_soc', title: 'Social Awareness Reflection' },
+                { key: 'reflection_rm', title: 'Relationship Management Reflection' }
+            ];
+
+            reflections.forEach(reflection => {
+                const text = assessmentData.responses[reflection.key];
+                if (text && text.trim()) {
+                    const div = document.createElement('div');
+                    div.className = 'reflection-summary';
+                    div.innerHTML = `
+                        <h4>${reflection.title}</h4>
+                        <div class="reflection-text">"${text}"</div>
+                    `;
+                    container.appendChild(div);
+                }
+            });
+        }
+
+        // Setup Downloads
+        function setupDownloads() {
+            document.getElementById('download-pdf').addEventListener('click', downloadPDF);
+            document.getElementById('download-markdown').addEventListener('click', downloadMarkdown);
+        }
+
+        // Download PDF
+        function downloadPDF() {
+            const reportContent = generateReportContent();
+            
+            // Create a simple HTML report for PDF generation
+            const htmlContent = `
+                <!DOCTYPE html>
+                <html>
+                <head>
+                    <title>EQ Assessment Report</title>
+                    <style>
+                        body { font-family: Arial, sans-serif; margin: 40px; line-height: 1.6; }
+                        .header { text-align: center; margin-bottom: 30px; }
+                        .score { font-size: 24px; font-weight: bold; color: #007bff; }
+                        .domain { margin: 20px 0; padding: 15px; border: 1px solid #ddd; border-radius: 8px; }
+                        .high { border-left: 4px solid #28a745; }
+                        .moderate { border-left: 4px solid #ffc107; }
+                        .developing { border-left: 4px solid #fd7e14; }
+                        .low { border-left: 4px solid #dc3545; }
+                    </style>
+                </head>
+                <body>
+                    ${reportContent}
+                </body>
+                </html>
+            `;
+
+            // Create blob and download
+            const blob = new Blob([htmlContent], { type: 'text/html' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'eq-assessment-results.html';
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+        }
+
+        // Download Markdown
+        function downloadMarkdown() {
+            const markdownContent = generateMarkdownReport();
+            
+            const blob = new Blob([markdownContent], { type: 'text/markdown' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'eq-assessment-results.md';
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+        }
+
+        // Generate Report Content
+        function generateReportContent() {
+            const date = assessmentData.completedAt ? assessmentData.completedAt.toDate().toLocaleDateString() : 'Recent';
+            const overall = assessmentData.scores.overallAverage.toFixed(1);
+            
+            return `
+                <div class="header">
+                    <h1>EQ Assessment Report</h1>
+                    <p>Completed: ${date}</p>
+                    <p class="score">Overall EQ Score: ${overall}/5.0</p>
+                    <p>${getOverallInterpretation(overall)}</p>
+                </div>
+                
+                <h2>Domain Scores</h2>
+                <div class="domain ${getDomainLevel(assessmentData.scores.selfAwareness).toLowerCase()}">
+                    <h3>Self-Awareness: ${assessmentData.scores.selfAwareness}/25</h3>
+                    <p>${getDomainInterpretation(assessmentData.scores.selfAwareness)}</p>
+                </div>
+                
+                <div class="domain ${getDomainLevel(assessmentData.scores.selfManagement).toLowerCase()}">
+                    <h3>Self-Management: ${assessmentData.scores.selfManagement}/25</h3>
+                    <p>${getDomainInterpretation(assessmentData.scores.selfManagement)}</p>
+                </div>
+                
+                <div class="domain ${getDomainLevel(assessmentData.scores.socialAwareness).toLowerCase()}">
+                    <h3>Social Awareness: ${assessmentData.scores.socialAwareness}/25</h3>
+                    <p>${getDomainInterpretation(assessmentData.scores.socialAwareness)}</p>
+                </div>
+                
+                <div class="domain ${getDomainLevel(assessmentData.scores.relationshipManagement).toLowerCase()}">
+                    <h3>Relationship Management: ${assessmentData.scores.relationshipManagement}/25</h3>
+                    <p>${getDomainInterpretation(assessmentData.scores.relationshipManagement)}</p>
+                </div>
+            `;
+        }
+
+        // Generate Markdown Report
+        function generateMarkdownReport() {
+            const date = assessmentData.completedAt ? assessmentData.completedAt.toDate().toLocaleDateString() : 'Recent';
+            const overall = assessmentData.scores.overallAverage.toFixed(1);
+            
+            return `# EQ Assessment Report
+
+**Completed:** ${date}  
+**Overall EQ Score:** ${overall}/5.0
+
+${getOverallInterpretation(overall)}
+
+## Domain Scores
+
+### Self-Awareness: ${assessmentData.scores.selfAwareness}/25
+${getDomainInterpretation(assessmentData.scores.selfAwareness)}
+
+**Recommendation:** ${getDomainRecommendation('selfAwareness', assessmentData.scores.selfAwareness)}
+
+### Self-Management: ${assessmentData.scores.selfManagement}/25
+${getDomainInterpretation(assessmentData.scores.selfManagement)}
+
+**Recommendation:** ${getDomainRecommendation('selfManagement', assessmentData.scores.selfManagement)}
+
+### Social Awareness: ${assessmentData.scores.socialAwareness}/25
+${getDomainInterpretation(assessmentData.scores.socialAwareness)}
+
+**Recommendation:** ${getDomainRecommendation('socialAwareness', assessmentData.scores.socialAwareness)}
+
+### Relationship Management: ${assessmentData.scores.relationshipManagement}/25
+${getDomainInterpretation(assessmentData.scores.relationshipManagement)}
+
+**Recommendation:** ${getDomainRecommendation('relationshipManagement', assessmentData.scores.relationshipManagement)}
+
+## Next Steps
+
+Visit the EQ Leadership Platform to explore personalized exercises and continue your emotional intelligence development journey.
+`;
+        }
+
+        // Helper Functions
+        function getOverallInterpretation(score) {
+            if (score >= 4.1) return "Exceptional emotional intelligence - you demonstrate strong EQ across all domains.";
+            if (score >= 3.1) return "Good emotional intelligence with solid foundations and some areas for growth.";
+            if (score >= 2.1) return "Developing emotional intelligence with noticeable gaps that present growth opportunities.";
+            return "Emerging emotional intelligence - significant development opportunities across multiple domains.";
+        }
+
+        function getDomainLevel(score) {
+            if (score >= 21) return "High";
+            if (score >= 16) return "Moderate";
+            if (score >= 11) return "Developing";
+            return "Low";
+        }
+
+        function getDomainInterpretation(score) {
+            if (score >= 21) return "Area of significant strength. Continue to leverage and refine these skills.";
+            if (score >= 16) return "Solid foundation with room for targeted improvement.";
+            if (score >= 11) return "Noticeable gaps that present clear development opportunities.";
+            return "Needs intentional development and structured learning.";
+        }
+
+        function getDomainRecommendation(domain, score) {
+            const recommendations = {
+                selfAwareness: {
+                    high: "Share and mentor others on developing EQ awareness.",
+                    moderate: "Reflect regularly to identify triggers and patterns.",
+                    developing: "Practice intentional reflection and journaling.",
+                    low: "Consider coaching or guided EQ training."
+                },
+                selfManagement: {
+                    high: "Challenge yourself with complex situations to deepen your skills.",
+                    moderate: "Develop personalized coping strategies for stressful scenarios.",
+                    developing: "Prioritize strategies for emotion regulation and stress management.",
+                    low: "Seek structured support to develop foundational self-management strategies."
+                },
+                socialAwareness: {
+                    high: "Use this strength proactively to build inclusive and culturally aware teams.",
+                    moderate: "Seek out diverse perspectives intentionally to deepen cultural understanding.",
+                    developing: "Explore targeted training on intercultural communication and empathy development.",
+                    low: "Invest in guided resources to build empathy and intercultural sensitivity."
+                },
+                relationshipManagement: {
+                    high: "Consider mentoring peers or sharing best practices broadly.",
+                    moderate: "Practice intentional engagement in difficult conversations and conflict situations.",
+                    developing: "Actively build skills in negotiation, influence, and conflict resolution.",
+                    low: "Invest in foundational training and guided practice in relationship management skills."
+                }
+            };
+
+            const level = getDomainLevel(score).toLowerCase();
+            return recommendations[domain][level];
+        }
+
+        function getPriority(score) {
+            if (score <= 15) return 'high';
+            if (score <= 20) return 'medium';
+            return 'low';
+        }
+
+        function showError() {
+            loading.classList.add('hidden');
+            error.classList.remove('hidden');
+        }
+    </script>
+    <script src="script.js"></script>
+</body>
+</html>

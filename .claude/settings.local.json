@@ -13,7 +13,8 @@
       "Bash(npm:*)",
       "Bash(git pull:*)",
       "Bash(git config:*)",
-      "Bash(timeout 5 npm run dev)"
+      "Bash(timeout 5 npm run dev)",
+      "WebFetch(domain:andyjsmits.github.io)"
     ],
     "deny": []
   }

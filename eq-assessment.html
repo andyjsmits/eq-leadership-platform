@@ -1,0 +1,989 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EQ Assessment - EQ Leadership Platform</title>
+    <meta name="description" content="Take our comprehensive Emotional Intelligence assessment designed for nonprofit and church leaders.">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .assessment-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+        
+        .assessment-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        
+        .assessment-header h1 {
+            color: var(--primary-color);
+            margin-bottom: 10px;
+        }
+        
+        .assessment-header p {
+            color: var(--text-light);
+            font-size: 1.1rem;
+            line-height: 1.6;
+        }
+        
+        .assessment-section {
+            background: white;
+            border-radius: 12px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .section-header {
+            border-bottom: 2px solid var(--primary-color);
+            padding-bottom: 15px;
+            margin-bottom: 25px;
+        }
+        
+        .section-header h2 {
+            color: var(--primary-color);
+            margin: 0;
+        }
+        
+        .question-group {
+            margin-bottom: 25px;
+        }
+        
+        .question {
+            margin-bottom: 15px;
+        }
+        
+        .question-text {
+            font-weight: 500;
+            margin-bottom: 10px;
+            color: var(--text-dark);
+        }
+        
+        .likert-scale {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 10px;
+            margin-bottom: 5px;
+        }
+        
+        .likert-option {
+            text-align: center;
+            padding: 10px 5px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+        }
+        
+        .likert-option:hover {
+            border-color: var(--primary-color);
+            background-color: var(--primary-light);
+        }
+        
+        .likert-option.selected {
+            border-color: var(--primary-color);
+            background-color: var(--primary-color);
+            color: white;
+        }
+        
+        .likert-labels {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 10px;
+            font-size: 0.8rem;
+            color: var(--text-light);
+            text-align: center;
+            margin-top: 5px;
+        }
+        
+        .situational-question {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+        
+        .situational-options {
+            margin-top: 15px;
+        }
+        
+        .situational-option {
+            margin: 10px 0;
+            padding: 12px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .situational-option:hover {
+            border-color: var(--primary-color);
+            background-color: var(--primary-light);
+        }
+        
+        .situational-option.selected {
+            border-color: var(--primary-color);
+            background-color: var(--primary-color);
+            color: white;
+        }
+        
+        .reflection-prompt {
+            background: #fff3cd;
+            border: 1px solid #ffeaa7;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+        
+        .reflection-prompt h4 {
+            color: #856404;
+            margin: 0 0 10px 0;
+        }
+        
+        .reflection-textarea {
+            width: 100%;
+            min-height: 80px;
+            padding: 12px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-family: inherit;
+            resize: vertical;
+        }
+        
+        .reflection-textarea:focus {
+            outline: none;
+            border-color: var(--primary-color);
+        }
+        
+        .progress-bar {
+            width: 100%;
+            height: 6px;
+            background: #e0e0e0;
+            border-radius: 3px;
+            margin: 20px 0;
+            overflow: hidden;
+        }
+        
+        .progress-fill {
+            height: 100%;
+            background: var(--primary-color);
+            transition: width 0.3s ease;
+            width: 0%;
+        }
+        
+        .assessment-navigation {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid #e0e0e0;
+        }
+        
+        .nav-button {
+            padding: 12px 24px;
+            border: none;
+            border-radius: 8px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-button.primary {
+            background: var(--primary-color);
+            color: white;
+        }
+        
+        .nav-button.primary:hover {
+            background: #0056b3;
+        }
+        
+        .nav-button.secondary {
+            background: #6c757d;
+            color: white;
+        }
+        
+        .nav-button.secondary:hover {
+            background: #5a6268;
+        }
+        
+        .nav-button:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+        
+        .hidden {
+            display: none;
+        }
+        
+        .loading-spinner {
+            text-align: center;
+            padding: 40px;
+        }
+        
+        .spinner {
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid var(--primary-color);
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        .auth-required {
+            text-align: center;
+            padding: 60px 20px;
+        }
+        
+        .auth-required h2 {
+            color: var(--primary-color);
+            margin-bottom: 20px;
+        }
+        
+        .auth-required p {
+            color: var(--text-light);
+            margin-bottom: 30px;
+        }
+        
+        .auth-button {
+            background: var(--primary-color);
+            color: white;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: background 0.3s ease;
+        }
+        
+        .auth-button:hover {
+            background: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-brand">
+                <a href="index.html"><h2>EQ Leadership</h2></a>
+            </div>
+            <div class="nav-links">
+                <a href="index.html#how-it-works">How It Works</a>
+                <a href="index.html#pricing">Pricing</a>
+                <a href="eq-toolkit.html">My EQ Toolkit</a>
+                <a href="auth.html">Sign In</a>
+            </div>
+            <div class="mobile-menu-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Loading State -->
+    <div id="loading" class="loading-spinner">
+        <div class="spinner"></div>
+        <p>Loading assessment...</p>
+    </div>
+
+    <!-- Authentication Required -->
+    <div id="auth-required" class="auth-required hidden">
+        <div class="container">
+            <h2>🔒 Assessment Access Required</h2>
+            <p>Please sign in to your account to access the EQ Assessment.</p>
+            <a href="auth.html" class="auth-button">Sign In</a>
+        </div>
+    </div>
+
+    <!-- Assessment Content -->
+    <div id="assessment-content" class="hidden">
+        <div class="container">
+            <div class="assessment-container">
+                <!-- Assessment Header -->
+                <div class="assessment-header">
+                    <h1>Emotional Intelligence Assessment</h1>
+                    <p><em>For Early-Stage Non-profit Leaders</em></p>
+                    <p>Welcome to this guided discovery experience, crafted specifically for emerging non-profit leaders like you. Emotional Intelligence (EQ) is crucial for navigating the complexities of leadership, especially as you balance diverse stakeholders such as volunteers, donors, boards, and program recipients.</p>
+                    <p><strong>Respond honestly to gain the most helpful insights.</strong></p>
+                </div>
+
+                <!-- Progress Bar -->
+                <div class="progress-bar">
+                    <div class="progress-fill" id="progress-fill"></div>
+                </div>
+
+                <!-- Assessment Form -->
+                <form id="eq-assessment-form">
+                    <!-- Part 1: Self-Awareness -->
+                    <div class="assessment-section" data-section="1">
+                        <div class="section-header">
+                            <h2>Part 1: Self-Awareness</h2>
+                        </div>
+                        
+                        <div class="question-group">
+                            <div class="question" data-question="sa1">
+                                <div class="question-text">I regularly reflect on how my emotions affect my decisions and interactions.</div>
+                                <div class="likert-scale">
+                                    <div class="likert-option" data-value="1">1</div>
+                                    <div class="likert-option" data-value="2">2</div>
+                                    <div class="likert-option" data-value="3">3</div>
+                                    <div class="likert-option" data-value="4">4</div>
+                                    <div class="likert-option" data-value="5">5</div>
+                                </div>
+                                <div class="likert-labels">
+                                    <span>Strongly Disagree</span>
+                                    <span>Disagree</span>
+                                    <span>Neutral</span>
+                                    <span>Agree</span>
+                                    <span>Strongly Agree</span>
+                                </div>
+                            </div>
+
+                            <div class="question" data-question="sa2">
+                                <div class="question-text">I'm aware of my emotional triggers in stressful situations.</div>
+                                <div class="likert-scale">
+                                    <div class="likert-option" data-value="1">1</div>
+                                    <div class="likert-option" data-value="2">2</div>
+                                    <div class="likert-option" data-value="3">3</div>
+                                    <div class="likert-option" data-value="4">4</div>
+                                    <div class="likert-option" data-value="5">5</div>
+                                </div>
+                                <div class="likert-labels">
+                                    <span>Strongly Disagree</span>
+                                    <span>Disagree</span>
+                                    <span>Neutral</span>
+                                    <span>Agree</span>
+                                    <span>Strongly Agree</span>
+                                </div>
+                            </div>
+
+                            <div class="question" data-question="sa3">
+                                <div class="question-text">I understand clearly how my moods influence my team.</div>
+                                <div class="likert-scale">
+                                    <div class="likert-option" data-value="1">1</div>
+                                    <div class="likert-option" data-value="2">2</div>
+                                    <div class="likert-option" data-value="3">3</div>
+                                    <div class="likert-option" data-value="4">4</div>
+                                    <div class="likert-option" data-value="5">5</div>
+                                </div>
+                                <div class="likert-labels">
+                                    <span>Strongly Disagree</span>
+                                    <span>Disagree</span>
+                                    <span>Neutral</span>
+                                    <span>Agree</span>
+                                    <span>Strongly Agree</span>
+                                </div>
+                            </div>
+
+                            <div class="question" data-question="sa4">
+                                <div class="question-text">I actively seek feedback to understand my blind spots.</div>
+                                <div class="likert-scale">
+                                    <div class="likert-option" data-value="1">1</div>
+                                    <div class="likert-option" data-value="2">2</div>
+                                    <div class="likert-option" data-value="3">3</div>
+                                    <div class="likert-option" data-value="4">4</div>
+                                    <div class="likert-option" data-value="5">5</div>
+                                </div>
+                                <div class="likert-labels">
+                                    <span>Strongly Disagree</span>
+                                    <span>Disagree</span>
+                                    <span>Neutral</span>
+                                    <span>Agree</span>
+                                    <span>Strongly Agree</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="reflection-prompt">
+                            <h4>Reflection Prompt:</h4>
+                            <p>Describe a recent situation where you recognized your emotions influencing your leadership decisions. What did you learn?</p>
+                            <textarea class="reflection-textarea" data-reflection="sa" placeholder="Take a moment to reflect on your experience..."></textarea>
+                        </div>
+                    </div>
+
+                    <!-- Part 2: Self-Management -->
+                    <div class="assessment-section hidden" data-section="2">
+                        <div class="section-header">
+                            <h2>Part 2: Self-Management</h2>
+                        </div>
+                        
+                        <div class="question-group">
+                            <div class="question" data-question="sm1">
+                                <div class="question-text">I maintain composure and clarity under pressure.</div>
+                                <div class="likert-scale">
+                                    <div class="likert-option" data-value="1">1</div>
+                                    <div class="likert-option" data-value="2">2</div>
+                                    <div class="likert-option" data-value="3">3</div>
+                                    <div class="likert-option" data-value="4">4</div>
+                                    <div class="likert-option" data-value="5">5</div>
+                                </div>
+                                <div class="likert-labels">
+                                    <span>Strongly Disagree</span>
+                                    <span>Disagree</span>
+                                    <span>Neutral</span>
+                                    <span>Agree</span>
+                                    <span>Strongly Agree</span>
+                                </div>
+                            </div>
+
+                            <div class="question" data-question="sm2">
+                                <div class="question-text">When frustrated, I pause before responding.</div>
+                                <div class="likert-scale">
+                                    <div class="likert-option" data-value="1">1</div>
+                                    <div class="likert-option" data-value="2">2</div>
+                                    <div class="likert-option" data-value="3">3</div>
+                                    <div class="likert-option" data-value="4">4</div>
+                                    <div class="likert-option" data-value="5">5</div>
+                                </div>
+                                <div class="likert-labels">
+                                    <span>Strongly Disagree</span>
+                                    <span>Disagree</span>
+                                    <span>Neutral</span>
+                                    <span>Agree</span>
+                                    <span>Strongly Agree</span>
+                                </div>
+                            </div>
+
+                            <div class="question" data-question="sm3">
+                                <div class="question-text">I adapt quickly when plans change unexpectedly.</div>
+                                <div class="likert-scale">
+                                    <div class="likert-option" data-value="1">1</div>
+                                    <div class="likert-option" data-value="2">2</div>
+                                    <div class="likert-option" data-value="3">3</div>
+                                    <div class="likert-option" data-value="4">4</div>
+                                    <div class="likert-option" data-value="5">5</div>
+                                </div>
+                                <div class="likert-labels">
+                                    <span>Strongly Disagree</span>
+                                    <span>Disagree</span>
+                                    <span>Neutral</span>
+                                    <span>Agree</span>
+                                    <span>Strongly Agree</span>
+                                </div>
+                            </div>
+
+                            <div class="question" data-question="sm4">
+                                <div class="question-text">I proactively manage my stress levels to remain effective.</div>
+                                <div class="likert-scale">
+                                    <div class="likert-option" data-value="1">1</div>
+                                    <div class="likert-option" data-value="2">2</div>
+                                    <div class="likert-option" data-value="3">3</div>
+                                    <div class="likert-option" data-value="4">4</div>
+                                    <div class="likert-option" data-value="5">5</div>
+                                </div>
+                                <div class="likert-labels">
+                                    <span>Strongly Disagree</span>
+                                    <span>Disagree</span>
+                                    <span>Neutral</span>
+                                    <span>Agree</span>
+                                    <span>Strongly Agree</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="situational-question">
+                            <h4>Situational Judgment:</h4>
+                            <p>A volunteer consistently misses deadlines, causing project delays. How do you manage your emotions and respond?</p>
+                            <div class="situational-options" data-question="sm_sj1">
+                                <div class="situational-option" data-value="1">a) Confront them immediately, highlighting their failures.</div>
+                                <div class="situational-option" data-value="5">b) Privately discuss the issue, calmly addressing the impact and collaboratively finding solutions.</div>
+                                <div class="situational-option" data-value="2">c) Ignore it, hoping they self-correct over time.</div>
+                                <div class="situational-option" data-value="3">d) Report the volunteer to your executive director immediately.</div>
+                            </div>
+                        </div>
+
+                        <div class="reflection-prompt">
+                            <h4>Reflection Prompt:</h4>
+                            <p>Think of a stressful situation you faced recently. How did you manage your emotional response, and what could you have done differently?</p>
+                            <textarea class="reflection-textarea" data-reflection="sm" placeholder="Take a moment to reflect on your experience..."></textarea>
+                        </div>
+                    </div>
+
+                    <!-- Part 3: Social Awareness -->
+                    <div class="assessment-section hidden" data-section="3">
+                        <div class="section-header">
+                            <h2>Part 3: Social Awareness</h2>
+                        </div>
+                        
+                        <div class="question-group">
+                            <div class="question" data-question="soc1">
+                                <div class="question-text">I actively listen and tune in to others' non-verbal cues.</div>
+                                <div class="likert-scale">
+                                    <div class="likert-option" data-value="1">1</div>
+                                    <div class="likert-option" data-value="2">2</div>
+                                    <div class="likert-option" data-value="3">3</div>
+                                    <div class="likert-option" data-value="4">4</div>
+                                    <div class="likert-option" data-value="5">5</div>
+                                </div>
+                                <div class="likert-labels">
+                                    <span>Strongly Disagree</span>
+                                    <span>Disagree</span>
+                                    <span>Neutral</span>
+                                    <span>Agree</span>
+                                    <span>Strongly Agree</span>
+                                </div>
+                            </div>
+
+                            <div class="question" data-question="soc2">
+                                <div class="question-text">I consciously seek to understand perspectives different from my own.</div>
+                                <div class="likert-scale">
+                                    <div class="likert-option" data-value="1">1</div>
+                                    <div class="likert-option" data-value="2">2</div>
+                                    <div class="likert-option" data-value="3">3</div>
+                                    <div class="likert-option" data-value="4">4</div>
+                                    <div class="likert-option" data-value="5">5</div>
+                                </div>
+                                <div class="likert-labels">
+                                    <span>Strongly Disagree</span>
+                                    <span>Disagree</span>
+                                    <span>Neutral</span>
+                                    <span>Agree</span>
+                                    <span>Strongly Agree</span>
+                                </div>
+                            </div>
+
+                            <div class="question" data-question="soc3">
+                                <div class="question-text">I'm sensitive to cultural differences and adapt my communication accordingly.</div>
+                                <div class="likert-scale">
+                                    <div class="likert-option" data-value="1">1</div>
+                                    <div class="likert-option" data-value="2">2</div>
+                                    <div class="likert-option" data-value="3">3</div>
+                                    <div class="likert-option" data-value="4">4</div>
+                                    <div class="likert-option" data-value="5">5</div>
+                                </div>
+                                <div class="likert-labels">
+                                    <span>Strongly Disagree</span>
+                                    <span>Disagree</span>
+                                    <span>Neutral</span>
+                                    <span>Agree</span>
+                                    <span>Strongly Agree</span>
+                                </div>
+                            </div>
+
+                            <div class="question" data-question="soc4">
+                                <div class="question-text">I notice underlying dynamics and tensions in team interactions.</div>
+                                <div class="likert-scale">
+                                    <div class="likert-option" data-value="1">1</div>
+                                    <div class="likert-option" data-value="2">2</div>
+                                    <div class="likert-option" data-value="3">3</div>
+                                    <div class="likert-option" data-value="4">4</div>
+                                    <div class="likert-option" data-value="5">5</div>
+                                </div>
+                                <div class="likert-labels">
+                                    <span>Strongly Disagree</span>
+                                    <span>Disagree</span>
+                                    <span>Neutral</span>
+                                    <span>Agree</span>
+                                    <span>Strongly Agree</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="situational-question">
+                            <h4>Situational Judgment:</h4>
+                            <p>You notice a culturally diverse volunteer feeling isolated during team meetings. What's your response?</p>
+                            <div class="situational-options" data-question="soc_sj1">
+                                <div class="situational-option" data-value="2">a) Assume they'll integrate naturally over time.</div>
+                                <div class="situational-option" data-value="1">b) Publicly ask them why they aren't participating.</div>
+                                <div class="situational-option" data-value="5">c) Privately ask about their experience and seek ways to include their perspective meaningfully.</div>
+                                <div class="situational-option" data-value="3">d) Immediately assign them visible responsibilities to force integration.</div>
+                            </div>
+                        </div>
+
+                        <div class="reflection-prompt">
+                            <h4>Reflection Prompt:</h4>
+                            <p>Reflect on a time when understanding someone else's perspective or cultural background improved your leadership effectiveness.</p>
+                            <textarea class="reflection-textarea" data-reflection="soc" placeholder="Take a moment to reflect on your experience..."></textarea>
+                        </div>
+                    </div>
+
+                    <!-- Part 4: Relationship Management -->
+                    <div class="assessment-section hidden" data-section="4">
+                        <div class="section-header">
+                            <h2>Part 4: Relationship Management</h2>
+                        </div>
+                        
+                        <div class="question-group">
+                            <div class="question" data-question="rm1">
+                                <div class="question-text">I resolve conflicts constructively and promptly.</div>
+                                <div class="likert-scale">
+                                    <div class="likert-option" data-value="1">1</div>
+                                    <div class="likert-option" data-value="2">2</div>
+                                    <div class="likert-option" data-value="3">3</div>
+                                    <div class="likert-option" data-value="4">4</div>
+                                    <div class="likert-option" data-value="5">5</div>
+                                </div>
+                                <div class="likert-labels">
+                                    <span>Strongly Disagree</span>
+                                    <span>Disagree</span>
+                                    <span>Neutral</span>
+                                    <span>Agree</span>
+                                    <span>Strongly Agree</span>
+                                </div>
+                            </div>
+
+                            <div class="question" data-question="rm2">
+                                <div class="question-text">I build trust and rapport intentionally within my team.</div>
+                                <div class="likert-scale">
+                                    <div class="likert-option" data-value="1">1</div>
+                                    <div class="likert-option" data-value="2">2</div>
+                                    <div class="likert-option" data-value="3">3</div>
+                                    <div class="likert-option" data-value="4">4</div>
+                                    <div class="likert-option" data-value="5">5</div>
+                                </div>
+                                <div class="likert-labels">
+                                    <span>Strongly Disagree</span>
+                                    <span>Disagree</span>
+                                    <span>Neutral</span>
+                                    <span>Agree</span>
+                                    <span>Strongly Agree</span>
+                                </div>
+                            </div>
+
+                            <div class="question" data-question="rm3">
+                                <div class="question-text">I provide thoughtful and timely feedback to team members.</div>
+                                <div class="likert-scale">
+                                    <div class="likert-option" data-value="1">1</div>
+                                    <div class="likert-option" data-value="2">2</div>
+                                    <div class="likert-option" data-value="3">3</div>
+                                    <div class="likert-option" data-value="4">4</div>
+                                    <div class="likert-option" data-value="5">5</div>
+                                </div>
+                                <div class="likert-labels">
+                                    <span>Strongly Disagree</span>
+                                    <span>Disagree</span>
+                                    <span>Neutral</span>
+                                    <span>Agree</span>
+                                    <span>Strongly Agree</span>
+                                </div>
+                            </div>
+
+                            <div class="question" data-question="rm4">
+                                <div class="question-text">I actively cultivate an inclusive team environment.</div>
+                                <div class="likert-scale">
+                                    <div class="likert-option" data-value="1">1</div>
+                                    <div class="likert-option" data-value="2">2</div>
+                                    <div class="likert-option" data-value="3">3</div>
+                                    <div class="likert-option" data-value="4">4</div>
+                                    <div class="likert-option" data-value="5">5</div>
+                                </div>
+                                <div class="likert-labels">
+                                    <span>Strongly Disagree</span>
+                                    <span>Disagree</span>
+                                    <span>Neutral</span>
+                                    <span>Agree</span>
+                                    <span>Strongly Agree</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="situational-question">
+                            <h4>Situational Judgment:</h4>
+                            <p>Two team members have an ongoing conflict affecting team morale. How would you intervene?</p>
+                            <div class="situational-options" data-question="rm_sj1">
+                                <div class="situational-option" data-value="1">a) Avoid involvement, hoping they'll resolve it independently.</div>
+                                <div class="situational-option" data-value="2">b) Address both separately, strongly instructing them to resolve their differences immediately.</div>
+                                <div class="situational-option" data-value="5">c) Facilitate a constructive conversation to openly discuss issues and collaboratively find solutions.</div>
+                                <div class="situational-option" data-value="3">d) Immediately reassign one team member to another project.</div>
+                            </div>
+                        </div>
+
+                        <div class="reflection-prompt">
+                            <h4>Reflection Prompt:</h4>
+                            <p>Describe a recent conflict or challenging relational situation. How did you manage the relationships involved, and what did you learn about your EQ strengths or gaps?</p>
+                            <textarea class="reflection-textarea" data-reflection="rm" placeholder="Take a moment to reflect on your experience..."></textarea>
+                        </div>
+                    </div>
+
+                    <!-- Navigation -->
+                    <div class="assessment-navigation">
+                        <button type="button" class="nav-button secondary" id="prev-button" disabled>Previous</button>
+                        <span id="section-indicator">Section 1 of 4</span>
+                        <button type="button" class="nav-button primary" id="next-button">Next</button>
+                        <button type="submit" class="nav-button primary hidden" id="submit-button">Complete Assessment</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Firebase and Assessment Logic -->
+    <script type="module">
+        // Import Firebase modules from CDN
+        import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js';
+        import { 
+            getAuth, 
+            onAuthStateChanged
+        } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js';
+        import { 
+            getFirestore, 
+            doc, 
+            setDoc,
+            serverTimestamp
+        } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js';
+
+        // Firebase configuration
+        const firebaseConfig = {
+            apiKey: "AIzaSyDGVQsKrQscmvqXUDRl15cnltW9IPFMp9o",
+            authDomain: "eqcq-83bf3.firebaseapp.com",
+            projectId: "eqcq-83bf3",
+            storageBucket: "eqcq-83bf3.firebasestorage.app",
+            messagingSenderId: "574429234092",
+            appId: "1:574429234092:web:a061ed1c58995599687009",
+            measurementId: "G-PGCWFCQ3SY"
+        };
+
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const auth = getAuth(app);
+        const db = getFirestore(app);
+
+        // Assessment State
+        let currentSection = 1;
+        let assessmentData = {};
+        let currentUser = null;
+
+        // DOM Elements
+        const loading = document.getElementById('loading');
+        const authRequired = document.getElementById('auth-required');
+        const assessmentContent = document.getElementById('assessment-content');
+        const prevButton = document.getElementById('prev-button');
+        const nextButton = document.getElementById('next-button');
+        const submitButton = document.getElementById('submit-button');
+        const sectionIndicator = document.getElementById('section-indicator');
+        const progressFill = document.getElementById('progress-fill');
+
+        // Authentication Check
+        onAuthStateChanged(auth, (user) => {
+            loading.classList.add('hidden');
+            
+            if (user) {
+                currentUser = user;
+                authRequired.classList.add('hidden');
+                assessmentContent.classList.remove('hidden');
+                initializeAssessment();
+            } else {
+                assessmentContent.classList.add('hidden');
+                authRequired.classList.remove('hidden');
+            }
+        });
+
+        // Initialize Assessment
+        function initializeAssessment() {
+            updateProgressBar();
+            updateSectionIndicator();
+            setupEventListeners();
+        }
+
+        // Event Listeners
+        function setupEventListeners() {
+            // Likert scale options
+            document.querySelectorAll('.likert-option').forEach(option => {
+                option.addEventListener('click', handleLikertSelect);
+            });
+
+            // Situational judgment options
+            document.querySelectorAll('.situational-option').forEach(option => {
+                option.addEventListener('click', handleSituationalSelect);
+            });
+
+            // Navigation buttons
+            prevButton.addEventListener('click', previousSection);
+            nextButton.addEventListener('click', nextSection);
+            submitButton.addEventListener('click', submitAssessment);
+
+            // Reflection textareas
+            document.querySelectorAll('.reflection-textarea').forEach(textarea => {
+                textarea.addEventListener('input', handleReflectionInput);
+            });
+        }
+
+        // Handle Likert Scale Selection
+        function handleLikertSelect(e) {
+            const question = e.target.closest('.question');
+            const questionId = question.getAttribute('data-question');
+            const value = parseInt(e.target.getAttribute('data-value'));
+
+            // Clear previous selection
+            question.querySelectorAll('.likert-option').forEach(opt => {
+                opt.classList.remove('selected');
+            });
+
+            // Mark current selection
+            e.target.classList.add('selected');
+
+            // Store data
+            assessmentData[questionId] = value;
+            
+            updateProgressBar();
+        }
+
+        // Handle Situational Judgment Selection
+        function handleSituationalSelect(e) {
+            const container = e.target.closest('.situational-options');
+            const questionId = container.getAttribute('data-question');
+            const value = parseInt(e.target.getAttribute('data-value'));
+
+            // Clear previous selection
+            container.querySelectorAll('.situational-option').forEach(opt => {
+                opt.classList.remove('selected');
+            });
+
+            // Mark current selection
+            e.target.classList.add('selected');
+
+            // Store data
+            assessmentData[questionId] = value;
+            
+            updateProgressBar();
+        }
+
+        // Handle Reflection Input
+        function handleReflectionInput(e) {
+            const reflectionId = e.target.getAttribute('data-reflection');
+            assessmentData[`reflection_${reflectionId}`] = e.target.value;
+        }
+
+        // Navigation Functions
+        function previousSection() {
+            if (currentSection > 1) {
+                document.querySelector(`[data-section="${currentSection}"]`).classList.add('hidden');
+                currentSection--;
+                document.querySelector(`[data-section="${currentSection}"]`).classList.remove('hidden');
+                updateNavigation();
+                updateProgressBar();
+                updateSectionIndicator();
+            }
+        }
+
+        function nextSection() {
+            if (currentSection < 4) {
+                document.querySelector(`[data-section="${currentSection}"]`).classList.add('hidden');
+                currentSection++;
+                document.querySelector(`[data-section="${currentSection}"]`).classList.remove('hidden');
+                updateNavigation();
+                updateProgressBar();
+                updateSectionIndicator();
+            }
+        }
+
+        function updateNavigation() {
+            prevButton.disabled = currentSection === 1;
+            
+            if (currentSection === 4) {
+                nextButton.classList.add('hidden');
+                submitButton.classList.remove('hidden');
+            } else {
+                nextButton.classList.remove('hidden');
+                submitButton.classList.add('hidden');
+            }
+        }
+
+        function updateSectionIndicator() {
+            sectionIndicator.textContent = `Section ${currentSection} of 4`;
+        }
+
+        function updateProgressBar() {
+            const totalQuestions = 18; // 16 Likert + 2 Situational Judgment
+            const completedQuestions = Object.keys(assessmentData).filter(key => 
+                !key.startsWith('reflection_')
+            ).length;
+            
+            const progress = (completedQuestions / totalQuestions) * 100;
+            progressFill.style.width = `${progress}%`;
+        }
+
+        // Submit Assessment
+        async function submitAssessment(e) {
+            e.preventDefault();
+            
+            if (!validateAssessment()) {
+                alert('Please answer all questions before submitting.');
+                return;
+            }
+
+            try {
+                submitButton.disabled = true;
+                submitButton.textContent = 'Submitting...';
+
+                // Calculate scores
+                const scores = calculateScores();
+                
+                // Save to Firebase
+                await setDoc(doc(db, 'assessments', currentUser.uid), {
+                    userId: currentUser.uid,
+                    email: currentUser.email,
+                    responses: assessmentData,
+                    scores: scores,
+                    completedAt: serverTimestamp()
+                });
+
+                // Redirect to results
+                window.location.href = `eq-results.html?assessment=${currentUser.uid}`;
+                
+            } catch (error) {
+                console.error('Error submitting assessment:', error);
+                alert('Error submitting assessment. Please try again.');
+                submitButton.disabled = false;
+                submitButton.textContent = 'Complete Assessment';
+            }
+        }
+
+        // Validate Assessment
+        function validateAssessment() {
+            const requiredQuestions = [
+                'sa1', 'sa2', 'sa3', 'sa4',
+                'sm1', 'sm2', 'sm3', 'sm4', 'sm_sj1',
+                'soc1', 'soc2', 'soc3', 'soc4', 'soc_sj1',
+                'rm1', 'rm2', 'rm3', 'rm4', 'rm_sj1'
+            ];
+
+            return requiredQuestions.every(q => assessmentData.hasOwnProperty(q));
+        }
+
+        // Calculate Scores
+        function calculateScores() {
+            const domains = {
+                selfAwareness: ['sa1', 'sa2', 'sa3', 'sa4'],
+                selfManagement: ['sm1', 'sm2', 'sm3', 'sm4', 'sm_sj1'],
+                socialAwareness: ['soc1', 'soc2', 'soc3', 'soc4', 'soc_sj1'],
+                relationshipManagement: ['rm1', 'rm2', 'rm3', 'rm4', 'rm_sj1']
+            };
+
+            const scores = {};
+            
+            Object.keys(domains).forEach(domain => {
+                const questions = domains[domain];
+                const domainTotal = questions.reduce((sum, q) => sum + (assessmentData[q] || 0), 0);
+                scores[domain] = domainTotal;
+            });
+
+            // Calculate overall score
+            scores.overall = Object.values(scores).reduce((sum, score) => sum + score, 0);
+            scores.overallAverage = scores.overall / 4;
+
+            return scores;
+        }
+
+        // Initialize navigation
+        updateNavigation();
+    </script>
+    <script src="script.js"></script>
+</body>
+</html>
