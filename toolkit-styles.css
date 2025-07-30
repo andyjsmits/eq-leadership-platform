@@ -1,0 +1,1164 @@
+/* EQ Toolkit Specific Styles */
+
+/* Navigation Active State */
+.nav-links a.active {
+    color: var(--primary-blue);
+    font-weight: 600;
+}
+
+.nav-brand a {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* Toolkit Hero Section */
+.toolkit-hero {
+    background: linear-gradient(135deg, var(--light-gray) 0%, white 100%);
+    padding: 4rem 0;
+    margin-top: 0;
+}
+
+.toolkit-hero .container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+}
+
+.toolkit-hero h1 {
+    color: var(--dark-gray);
+    font-size: 3rem;
+    margin-bottom: 1rem;
+}
+
+.toolkit-hero h2 {
+    color: var(--medium-gray);
+    font-size: 1.3rem;
+    font-weight: 400;
+    margin-bottom: 1.5rem;
+}
+
+.toolkit-hero p {
+    color: var(--medium-gray);
+    font-size: 1.1rem;
+    margin-bottom: 2rem;
+}
+
+.toolkit-stats {
+    display: flex;
+    gap: 2rem;
+    flex-wrap: wrap;
+}
+
+.toolkit-stats .stat-item {
+    text-align: center;
+}
+
+.toolkit-stats .stat-item strong {
+    display: block;
+    font-size: 2rem;
+    color: var(--primary-blue);
+    font-weight: 700;
+    margin-bottom: 0.25rem;
+}
+
+.toolkit-stats .stat-item span {
+    color: var(--medium-gray);
+    font-size: 0.9rem;
+}
+
+/* EQ Components Section */
+.eq-components {
+    padding: 6rem 0;
+}
+
+.eq-components h2 {
+    text-align: center;
+    color: var(--dark-gray);
+    margin-bottom: 1rem;
+}
+
+.section-intro {
+    text-align: center;
+    color: var(--medium-gray);
+    font-size: 1.2rem;
+    max-width: 800px;
+    margin: 0 auto 4rem;
+}
+
+.components-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+}
+
+.component-card {
+    background: white;
+    border: 2px solid var(--light-gray);
+    border-radius: 12px;
+    padding: 2.5rem;
+    transition: all 0.3s ease;
+    text-align: center;
+}
+
+.component-card:hover {
+    border-color: var(--primary-blue);
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(37, 99, 235, 0.1);
+}
+
+.component-icon {
+    margin-bottom: 1.5rem;
+}
+
+.icon-placeholder {
+    width: 80px;
+    height: 80px;
+    background: var(--light-gray);
+    border: 2px dashed var(--medium-gray);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+    font-size: 2rem;
+    transition: all 0.3s ease;
+}
+
+.component-card:hover .icon-placeholder {
+    background: var(--primary-blue);
+    border-color: var(--primary-blue);
+}
+
+.component-card:hover .icon-placeholder span {
+    filter: brightness(0) invert(1);
+}
+
+.component-card h3 {
+    color: var(--dark-gray);
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
+}
+
+.component-description {
+    color: var(--medium-gray);
+    margin-bottom: 2rem;
+    line-height: 1.6;
+}
+
+.exercise-preview {
+    text-align: left;
+    margin-bottom: 2rem;
+}
+
+.exercise-preview h4 {
+    color: var(--primary-blue);
+    font-size: 1rem;
+    margin-bottom: 1rem;
+    font-weight: 600;
+}
+
+.exercise-preview ul {
+    list-style: none;
+    padding: 0;
+}
+
+.exercise-preview li {
+    color: var(--medium-gray);
+    padding: 0.5rem 0;
+    border-bottom: 1px solid #f1f5f9;
+    font-size: 0.95rem;
+    position: relative;
+    padding-left: 1.5rem;
+}
+
+.exercise-preview li:before {
+    content: "→";
+    position: absolute;
+    left: 0;
+    color: var(--primary-blue);
+    font-weight: bold;
+}
+
+.exercise-preview li:last-child {
+    border-bottom: none;
+}
+
+.component-button {
+    background: var(--primary-blue);
+    color: white;
+    padding: 12px 24px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    display: inline-block;
+}
+
+.component-button:hover {
+    background: #1d4ed8;
+    transform: translateY(-2px);
+}
+
+/* Getting Started Section */
+.getting-started {
+    padding: 6rem 0;
+    background: var(--light-gray);
+}
+
+.getting-started h2 {
+    text-align: center;
+    color: var(--dark-gray);
+    margin-bottom: 4rem;
+}
+
+.guide-steps {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 3rem;
+}
+
+.guide-step {
+    background: white;
+    padding: 2.5rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    text-align: center;
+}
+
+.step-number {
+    width: 50px;
+    height: 50px;
+    background: var(--primary-blue);
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.3rem;
+    font-weight: 700;
+    margin: 0 auto 1.5rem;
+}
+
+.guide-step h3 {
+    color: var(--dark-gray);
+    margin-bottom: 1rem;
+}
+
+.guide-step p {
+    color: var(--medium-gray);
+    margin-bottom: 1.5rem;
+}
+
+.guide-link {
+    color: var(--primary-blue);
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.3s ease;
+}
+
+.guide-link:hover {
+    color: #1d4ed8;
+}
+
+/* Difficulty Guide Section */
+.difficulty-guide {
+    padding: 6rem 0;
+}
+
+.difficulty-guide h2 {
+    text-align: center;
+    color: var(--dark-gray);
+    margin-bottom: 4rem;
+}
+
+.difficulty-levels {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.difficulty-card {
+    background: white;
+    border-radius: 12px;
+    padding: 2.5rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    position: relative;
+    border-top: 4px solid var(--medium-gray);
+}
+
+.difficulty-card.entry {
+    border-top-color: var(--success-green);
+}
+
+.difficulty-card.intermediate {
+    border-top-color: var(--warm-accent);
+}
+
+.difficulty-card.advanced {
+    border-top-color: #dc2626;
+}
+
+.difficulty-badge {
+    position: absolute;
+    top: -15px;
+    left: 20px;
+    background: white;
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--dark-gray);
+    border: 2px solid var(--medium-gray);
+}
+
+.entry .difficulty-badge {
+    border-color: var(--success-green);
+    color: var(--success-green);
+}
+
+.intermediate .difficulty-badge {
+    border-color: var(--warm-accent);
+    color: var(--warm-accent);
+}
+
+.advanced .difficulty-badge {
+    border-color: #dc2626;
+    color: #dc2626;
+}
+
+.difficulty-card h3 {
+    color: var(--dark-gray);
+    margin-bottom: 1rem;
+    margin-top: 1rem;
+}
+
+.difficulty-card p {
+    color: var(--medium-gray);
+    margin-bottom: 1.5rem;
+}
+
+.difficulty-examples {
+    background: var(--light-gray);
+    padding: 1rem;
+    border-radius: 8px;
+    font-size: 0.95rem;
+}
+
+.difficulty-examples strong {
+    color: var(--primary-blue);
+}
+
+/* Toolkit CTA Section */
+.toolkit-cta {
+    padding: 6rem 0;
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #1d4ed8 100%);
+    color: white;
+    text-align: center;
+}
+
+.toolkit-cta h2 {
+    color: white;
+    margin-bottom: 1.5rem;
+}
+
+.toolkit-cta p {
+    font-size: 1.2rem;
+    margin-bottom: 3rem;
+    opacity: 0.9;
+}
+
+.cta-buttons {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+/* Exercise Page Styles */
+.exercise-hero {
+    background: var(--light-gray);
+    padding: 4rem 0;
+}
+
+.exercise-hero h1 {
+    color: var(--dark-gray);
+    margin-bottom: 1rem;
+}
+
+.exercise-hero .subtitle {
+    color: var(--medium-gray);
+    font-size: 1.3rem;
+    font-weight: 400;
+    margin-bottom: 2rem;
+}
+
+.exercise-nav {
+    margin-bottom: 2rem;
+}
+
+.breadcrumb {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--medium-gray);
+}
+
+.breadcrumb a {
+    color: var(--primary-blue);
+    text-decoration: none;
+}
+
+.breadcrumb span {
+    color: var(--medium-gray);
+}
+
+.exercise-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 2rem;
+    padding: 4rem 0;
+}
+
+.exercise-card {
+    background: white;
+    border-radius: 12px;
+    padding: 2.5rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    border-left: 4px solid var(--primary-blue);
+    transition: all 0.3s ease;
+}
+
+.exercise-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+}
+
+.exercise-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 1.5rem;
+}
+
+.exercise-title {
+    flex-grow: 1;
+}
+
+.exercise-card h3 {
+    color: var(--dark-gray);
+    margin-bottom: 0.5rem;
+    font-size: 1.3rem;
+}
+
+.exercise-meta {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 0.5rem;
+}
+
+.difficulty-tag {
+    background: var(--light-gray);
+    color: var(--medium-gray);
+    padding: 4px 12px;
+    border-radius: 12px;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+.difficulty-tag.entry {
+    background: #ecfdf5;
+    color: var(--success-green);
+}
+
+.difficulty-tag.intermediate {
+    background: #fffbeb;
+    color: var(--warm-accent);
+}
+
+.difficulty-tag.advanced {
+    background: #fef2f2;
+    color: #dc2626;
+}
+
+.time-commitment {
+    font-size: 0.9rem;
+    color: var(--medium-gray);
+    font-weight: 500;
+}
+
+.exercise-description {
+    color: var(--medium-gray);
+    margin-bottom: 1.5rem;
+    line-height: 1.6;
+}
+
+.exercise-button {
+    background: var(--primary-blue);
+    color: white;
+    padding: 10px 20px;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.95rem;
+    transition: all 0.3s ease;
+    display: inline-block;
+}
+
+.exercise-button:hover {
+    background: #1d4ed8;
+    transform: translateY(-1px);
+}
+
+/* Individual Exercise Page Styles */
+.exercise-detail {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 4rem 0;
+}
+
+.exercise-detail h1 {
+    color: var(--dark-gray);
+    margin-bottom: 1rem;
+}
+
+.exercise-intro {
+    background: var(--light-gray);
+    padding: 2rem;
+    border-radius: 12px;
+    margin-bottom: 3rem;
+}
+
+.exercise-meta-detail {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 2rem;
+    margin-bottom: 2rem;
+}
+
+.meta-item {
+    text-align: center;
+}
+
+.meta-item strong {
+    display: block;
+    color: var(--primary-blue);
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+}
+
+.meta-item span {
+    color: var(--medium-gray);
+    font-size: 0.95rem;
+}
+
+.exercise-content {
+    line-height: 1.7;
+}
+
+.exercise-content h2 {
+    color: var(--dark-gray);
+    margin-top: 3rem;
+    margin-bottom: 1.5rem;
+    border-bottom: 2px solid var(--light-gray);
+    padding-bottom: 0.5rem;
+}
+
+.exercise-content h3 {
+    color: var(--primary-blue);
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+}
+
+.exercise-content ul {
+    margin-bottom: 1.5rem;
+    padding-left: 1.5rem;
+}
+
+.exercise-content li {
+    margin-bottom: 0.5rem;
+    color: var(--medium-gray);
+}
+
+.exercise-content strong {
+    color: var(--dark-gray);
+}
+
+.exercise-navigation {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 4rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--light-gray);
+}
+
+.nav-button {
+    background: var(--primary-blue);
+    color: white;
+    padding: 12px 24px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.nav-button:hover {
+    background: #1d4ed8;
+    transform: translateY(-2px);
+}
+
+.nav-button.secondary {
+    background: transparent;
+    color: var(--primary-blue);
+    border: 2px solid var(--primary-blue);
+}
+
+.nav-button.secondary:hover {
+    background: var(--primary-blue);
+    color: white;
+}
+
+/* Responsive Design for Toolkit */
+@media (max-width: 768px) {
+    .toolkit-hero .container {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+    
+    .toolkit-hero h1 {
+        font-size: 2.5rem;
+    }
+    
+    .toolkit-stats {
+        justify-content: center;
+    }
+    
+    .components-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .guide-steps {
+        grid-template-columns: 1fr;
+    }
+    
+    .difficulty-levels {
+        grid-template-columns: 1fr;
+    }
+    
+    .exercise-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .exercise-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    .exercise-meta {
+        align-items: flex-start;
+        margin-top: 1rem;
+    }
+    
+    .exercise-navigation {
+        flex-direction: column;
+        gap: 1rem;
+    }
+    
+    .cta-buttons {
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
+/* Individual Exercise Page Styles */
+.exercise-visual {
+    background: var(--light-gray);
+    padding: 2rem;
+    border-radius: 12px;
+    margin: 2rem 0;
+}
+
+.exercise-visual h3 {
+    color: var(--primary-blue);
+    margin-bottom: 1.5rem;
+    text-align: center;
+}
+
+.weather-example {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.weather-item {
+    background: white;
+    padding: 1rem;
+    border-radius: 8px;
+    border-left: 4px solid var(--primary-blue);
+}
+
+.getting-started-steps {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    margin: 2rem 0;
+}
+
+.step-card {
+    background: var(--light-gray);
+    padding: 2rem;
+    border-radius: 12px;
+    display: flex;
+    gap: 1.5rem;
+    align-items: flex-start;
+}
+
+.step-card .step-number {
+    width: 40px;
+    height: 40px;
+    background: var(--primary-blue);
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    flex-shrink: 0;
+}
+
+.step-content h3 {
+    color: var(--dark-gray);
+    margin-bottom: 0.5rem;
+    font-size: 1.1rem;
+}
+
+.step-content p {
+    color: var(--medium-gray);
+    margin: 0;
+    font-size: 0.95rem;
+}
+
+.inline-link {
+    color: var(--primary-blue);
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.inline-link:hover {
+    text-decoration: underline;
+}
+
+.tools-section {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin: 2rem 0;
+}
+
+.tool-card {
+    background: white;
+    border: 2px solid var(--light-gray);
+    padding: 2rem;
+    border-radius: 12px;
+}
+
+.tool-card h3 {
+    color: var(--primary-blue);
+    margin-bottom: 1rem;
+}
+
+.tool-card ul {
+    margin-bottom: 1rem;
+}
+
+.placeholder-graphic {
+    background: var(--light-gray);
+    border: 2px dashed var(--medium-gray);
+    padding: 3rem;
+    text-align: center;
+    border-radius: 8px;
+    color: var(--medium-gray);
+    font-style: italic;
+    margin-top: 1rem;
+}
+
+.challenges-section {
+    margin: 2rem 0;
+}
+
+.challenge-item {
+    background: #fef3c7;
+    border-left: 4px solid var(--warm-accent);
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+    border-radius: 8px;
+}
+
+.challenge-item h3 {
+    color: var(--dark-gray);
+    margin-bottom: 0.5rem;
+    font-size: 1.1rem;
+}
+
+.challenge-item p {
+    color: var(--medium-gray);
+    margin: 0;
+}
+
+.success-stories {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin: 2rem 0;
+}
+
+.story-card {
+    background: #f0f9ff;
+    border-left: 4px solid var(--primary-blue);
+    padding: 2rem;
+    border-radius: 8px;
+}
+
+.story-quote {
+    font-style: italic;
+    color: var(--dark-gray);
+    margin-bottom: 1rem;
+    line-height: 1.6;
+}
+
+.story-author {
+    color: var(--primary-blue);
+    font-weight: 600;
+    font-size: 0.95rem;
+}
+
+.progress-tracker {
+    background: var(--light-gray);
+    padding: 2rem;
+    border-radius: 12px;
+    margin: 2rem 0;
+}
+
+.progress-tracker h3 {
+    color: var(--primary-blue);
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.tracker-weeks {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+}
+
+.week-item {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 8px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.week-number {
+    font-weight: 600;
+    color: var(--primary-blue);
+}
+
+.week-goal {
+    color: var(--medium-gray);
+    font-size: 0.95rem;
+    flex-grow: 1;
+    margin: 0 1rem;
+}
+
+.week-checkbox {
+    font-size: 1.2rem;
+    color: var(--success-green);
+    cursor: pointer;
+}
+
+.week-checkbox:hover {
+    transform: scale(1.1);
+}
+
+blockquote {
+    background: #f8fafc;
+    border-left: 4px solid var(--primary-blue);
+    padding: 2rem;
+    margin: 2rem 0;
+    border-radius: 8px;
+    font-style: italic;
+    color: var(--dark-gray);
+    font-size: 1.1rem;
+    line-height: 1.6;
+}
+
+/* Implementation Guide Styles */
+.implementation-guide {
+    padding: 4rem 0;
+    background: var(--light-gray);
+}
+
+.implementation-guide h2 {
+    text-align: center;
+    color: var(--dark-gray);
+    margin-bottom: 1rem;
+}
+
+.implementation-timeline {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.timeline-phase {
+    background: white;
+    padding: 2rem;
+    border-radius: 12px;
+    margin-bottom: 2rem;
+    border-left: 4px solid var(--primary-blue);
+    position: relative;
+}
+
+.phase-number {
+    position: absolute;
+    left: -15px;
+    top: 2rem;
+    width: 30px;
+    height: 30px;
+    background: var(--primary-blue);
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 0.9rem;
+}
+
+.timeline-phase h3 {
+    color: var(--dark-gray);
+    margin-bottom: 1rem;
+    margin-left: 1rem;
+}
+
+.timeline-phase p {
+    color: var(--medium-gray);
+    margin-bottom: 1rem;
+    margin-left: 1rem;
+}
+
+.phase-goals {
+    background: var(--light-gray);
+    padding: 1rem;
+    border-radius: 8px;
+    margin-left: 1rem;
+    font-size: 0.95rem;
+}
+
+.phase-goals strong {
+    color: var(--primary-blue);
+}
+
+/* Progress Indicators Styles */
+.progress-section {
+    padding: 4rem 0;
+    background: var(--light-gray);
+}
+
+.progress-section h2 {
+    text-align: center;
+    color: var(--dark-gray);
+    margin-bottom: 3rem;
+}
+
+.progress-indicators {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.indicator-category {
+    background: white;
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+}
+
+.indicator-category h3 {
+    color: var(--primary-blue);
+    margin-bottom: 1.5rem;
+    text-align: center;
+}
+
+.indicator-category ul {
+    list-style: none;
+    padding: 0;
+}
+
+.indicator-category li {
+    color: var(--medium-gray);
+    padding: 0.75rem 0;
+    border-bottom: 1px solid var(--light-gray);
+    position: relative;
+    padding-left: 1.5rem;
+}
+
+.indicator-category li:before {
+    content: "✓";
+    position: absolute;
+    left: 0;
+    color: var(--success-green);
+    font-weight: bold;
+}
+
+.indicator-category li:last-child {
+    border-bottom: none;
+}
+
+/* Exercise Highlights */
+.exercise-highlights {
+    background: #f0f9ff;
+    padding: 1rem;
+    border-radius: 8px;
+    margin-bottom: 1.5rem;
+    font-size: 0.9rem;
+    border-left: 3px solid var(--primary-blue);
+}
+
+.exercise-highlights strong {
+    color: var(--primary-blue);
+}
+
+/* Exercise Section Additional Styles */
+.exercises-section {
+    padding: 4rem 0;
+}
+
+/* Success Principles Grid */
+.success-principles {
+    padding: 4rem 0;
+    background: var(--light-gray);
+}
+
+.success-principles h2 {
+    text-align: center;
+    color: var(--dark-gray);
+    margin-bottom: 3rem;
+}
+
+.principles-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+}
+
+.principle-card {
+    background: white;
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    text-align: center;
+}
+
+.principle-card h3 {
+    color: var(--dark-gray);
+    margin-bottom: 1rem;
+    font-size: 1.2rem;
+}
+
+.principle-card p {
+    color: var(--medium-gray);
+    margin: 0;
+    line-height: 1.6;
+}
+
+@media (max-width: 768px) {
+    .getting-started-steps {
+        grid-template-columns: 1fr;
+    }
+    
+    .step-card {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .tools-section {
+        grid-template-columns: 1fr;
+    }
+    
+    .success-stories {
+        grid-template-columns: 1fr;
+    }
+    
+    .tracker-weeks {
+        grid-template-columns: 1fr;
+    }
+    
+    .week-item {
+        flex-direction: column;
+        text-align: center;
+        gap: 0.5rem;
+    }
+    
+    .weather-example {
+        gap: 0.5rem;
+    }
+    
+    .progress-indicators {
+        grid-template-columns: 1fr;
+    }
+    
+    .principles-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .timeline-phase {
+        margin-left: 1rem;
+    }
+    
+    .phase-number {
+        left: -30px;
+    }
+}
+
+@media (max-width: 480px) {
+    .toolkit-hero {
+        padding: 3rem 0;
+    }
+    
+    .eq-components,
+    .getting-started,
+    .difficulty-guide {
+        padding: 4rem 0;
+    }
+    
+    .component-card,
+    .guide-step,
+    .difficulty-card,
+    .exercise-card {
+        padding: 2rem 1.5rem;
+    }
+    
+    .exercise-detail {
+        padding: 2rem 0;
+    }
+    
+    .step-card,
+    .tool-card,
+    .challenge-item,
+    .story-card {
+        padding: 1.5rem;
+    }
+    
+    .timeline-phase {
+        padding: 1.5rem;
+        margin-left: 0.5rem;
+    }
+    
+    .phase-number {
+        left: -15px;
+    }
+}
