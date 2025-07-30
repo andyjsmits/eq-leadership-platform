@@ -13,8 +13,23 @@ const firebaseConfig = {
 
 // Initialize Firebase
 import { initializeApp } from 'firebase/app';
-import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, onAuthStateChanged } from 'firebase/auth';
-import { getFirestore, doc, setDoc, getDoc } from 'firebase/firestore';
+import { 
+  getAuth, 
+  createUserWithEmailAndPassword, 
+  signInWithEmailAndPassword, 
+  signOut, 
+  onAuthStateChanged,
+  GoogleAuthProvider,
+  signInWithPopup
+} from 'firebase/auth';
+import { 
+  getFirestore, 
+  doc, 
+  setDoc, 
+  getDoc, 
+  updateDoc,
+  serverTimestamp
+} from 'firebase/firestore';
 import { getAnalytics } from "firebase/analytics";
 
 const app = initializeApp(firebaseConfig);
@@ -98,6 +113,34 @@ export const updateUserProgress = async (userId, exerciseId, progress) => {
       await setDoc(userRef, { completedExercises }, { merge: true });
       return { success: true };
     }
+  } catch (error) {
+    return { success: false, error: error.message };
+  }
+};
+
+// Google Sign-In
+export const signInWithGoogle = async () => {
+  try {
+    const provider = new GoogleAuthProvider();
+    const result = await signInWithPopup(auth, provider);
+    const user = result.user;
+    
+    // Check if user profile exists, create if not
+    const userRef = doc(db, 'users', user.uid);
+    const userSnap = await getDoc(userRef);
+    
+    if (!userSnap.exists()) {
+      await setDoc(userRef, {
+        displayName: user.displayName || 'User',
+        email: user.email,
+        createdAt: new Date(),
+        completedExercises: [],
+        eqAssessmentScore: null,
+        currentFocus: 'self-awareness'
+      });
+    }
+    
+    return { success: true, user };
   } catch (error) {
     return { success: false, error: error.message };
   }
