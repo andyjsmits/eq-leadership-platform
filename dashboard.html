@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - EQ Leadership Platform</title>
+    <meta name="description" content="Track your emotional intelligence progress and access personalized learning recommendations.">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="dashboard-styles.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-brand">
+                <a href="index.html"><h2>EQ Leadership</h2></a>
+            </div>
+            <div class="nav-links">
+                <a href="dashboard.html" class="active">Dashboard</a>
+                <a href="eq-toolkit.html">EQ Toolkit</a>
+                <a href="#" id="assessment-link">Assessment</a>
+                <div class="user-menu">
+                    <button class="user-avatar" id="user-menu-toggle">
+                        <span id="user-initials">JD</span>
+                    </button>
+                    <div class="user-dropdown hidden" id="user-dropdown">
+                        <div class="user-info">
+                            <strong id="user-name">John Doe</strong>
+                            <span id="user-email">john@example.com</span>
+                        </div>
+                        <div class="dropdown-divider"></div>
+                        <a href="#" id="profile-link">Profile Settings</a>
+                        <a href="#" id="logout-link">Sign Out</a>
+                    </div>
+                </div>
+            </div>
+            <div class="mobile-menu-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Dashboard Content -->
+    <main class="dashboard-main">
+        <div class="container">
+            <!-- Welcome Section -->
+            <section class="welcome-section">
+                <div class="welcome-content">
+                    <h1>Welcome back, <span id="welcome-name">John</span>!</h1>
+                    <p>Continue building your emotional intelligence leadership skills</p>
+                </div>
+                <div class="quick-stats">
+                    <div class="stat-card">
+                        <div class="stat-number" id="completion-rate">73%</div>
+                        <div class="stat-label">Overall Progress</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number" id="current-streak">12</div>
+                        <div class="stat-label">Day Streak</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number" id="exercises-completed">8</div>
+                        <div class="stat-label">Exercises Done</div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Main Dashboard Grid -->
+            <div class="dashboard-grid">
+                
+                <!-- EQ Score Card -->
+                <div class="dashboard-card eq-score-card">
+                    <div class="card-header">
+                        <h2>Your EQ Score</h2>
+                        <button class="retake-btn" id="retake-assessment">Retake Assessment</button>
+                    </div>
+                    <div class="eq-score-display">
+                        <div class="score-circle">
+                            <div class="score-number" id="eq-score">3.4</div>
+                            <div class="score-max">/5.0</div>
+                        </div>
+                        <div class="score-breakdown">
+                            <div class="skill-bar">
+                                <span>Self-Awareness</span>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 80%"></div>
+                                </div>
+                                <span>4.0</span>
+                            </div>
+                            <div class="skill-bar">
+                                <span>Self-Management</span>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 60%"></div>
+                                </div>
+                                <span>3.0</span>
+                            </div>
+                            <div class="skill-bar">
+                                <span>Social Awareness</span>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 70%"></div>
+                                </div>
+                                <span>3.5</span>
+                            </div>
+                            <div class="skill-bar">
+                                <span>Relationship Mgmt</span>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 65%"></div>
+                                </div>
+                                <span>3.2</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Current Focus Card -->
+                <div class="dashboard-card focus-card">
+                    <div class="card-header">
+                        <h2>This Week's Focus</h2>
+                        <span class="focus-badge">Self-Management</span>
+                    </div>
+                    <div class="current-exercise">
+                        <div class="exercise-thumbnail">
+                            <span class="exercise-icon">⚡</span>
+                        </div>
+                        <div class="exercise-info">
+                            <h3>STOP Technique with Physiological Reset</h3>
+                            <p>Master emotional regulation with the foundational STOP technique</p>
+                            <div class="exercise-progress">
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 40%"></div>
+                                </div>
+                                <span>40% complete</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-actions">
+                        <button class="continue-btn">Continue Exercise</button>
+                        <button class="change-focus-btn">Change Focus Area</button>
+                    </div>
+                </div>
+
+                <!-- Recent Activity Card -->
+                <div class="dashboard-card activity-card">
+                    <div class="card-header">
+                        <h2>Recent Activity</h2>
+                        <a href="#" class="view-all">View All</a>
+                    </div>
+                    <div class="activity-list">
+                        <div class="activity-item">
+                            <div class="activity-icon completed">✓</div>
+                            <div class="activity-content">
+                                <strong>Completed: Daily Emotional Weather Report</strong>
+                                <span>Self-Awareness • 2 hours ago</span>
+                            </div>
+                        </div>
+                        <div class="activity-item">
+                            <div class="activity-icon in-progress">◯</div>
+                            <div class="activity-content">
+                                <strong>Started: STOP Technique Exercise</strong>
+                                <span>Self-Management • 1 day ago</span>
+                            </div>
+                        </div>
+                        <div class="activity-item">
+                            <div class="activity-icon completed">✓</div>
+                            <div class="activity-content">
+                                <strong>Completed: EQ Assessment</strong>
+                                <span>Assessment • 3 days ago</span>
+                            </div>
+                        </div>
+                        <div class="activity-item">
+                            <div class="activity-icon joined">🎉</div>
+                            <div class="activity-content">
+                                <strong>Joined EQ Leadership Platform</strong>
+                                <span>Welcome! • 1 week ago</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Recommendations Card -->
+                <div class="dashboard-card recommendations-card">
+                    <div class="card-header">
+                        <h2>Recommended for You</h2>
+                    </div>
+                    <div class="recommendation-list">
+                        <div class="recommendation-item">
+                            <div class="recommendation-icon">🔍</div>
+                            <div class="recommendation-content">
+                                <h4>Trigger Archaeology Project</h4>
+                                <p>Ready to dive deeper into self-awareness? This intermediate exercise helps identify emotional patterns.</p>
+                                <button class="start-btn">Start Exercise</button>
+                            </div>
+                        </div>
+                        <div class="recommendation-item">
+                            <div class="recommendation-icon">👥</div>
+                            <div class="recommendation-content">
+                                <h4>Nonverbal Observation Challenge</h4>
+                                <p>Build social awareness skills by practicing reading nonverbal communication cues.</p>
+                                <button class="start-btn">Start Exercise</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Quick Actions Card -->
+                <div class="dashboard-card quick-actions-card">
+                    <div class="card-header">
+                        <h2>Quick Actions</h2>
+                    </div>
+                    <div class="quick-actions-grid">
+                        <button class="quick-action-btn">
+                            <span class="action-icon">📊</span>
+                            <span>Take 360 Feedback</span>
+                        </button>
+                        <button class="quick-action-btn">
+                            <span class="action-icon">💬</span>
+                            <span>Book Coaching</span>
+                        </button>
+                        <button class="quick-action-btn">
+                            <span class="action-icon">📈</span>
+                            <span>View Progress Report</span>
+                        </button>
+                        <button class="quick-action-btn">
+                            <span class="action-icon">👥</span>
+                            <span>Connect with Peers</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Learning Streak Card -->
+                <div class="dashboard-card streak-card">
+                    <div class="card-header">
+                        <h2>Learning Streak</h2>
+                    </div>
+                    <div class="streak-display">
+                        <div class="streak-flame">🔥</div>
+                        <div class="streak-number">12</div>
+                        <div class="streak-label">days in a row</div>
+                        <p>Keep it up! You're building a great habit.</p>
+                    </div>
+                    <div class="streak-calendar">
+                        <div class="calendar-day completed">M</div>
+                        <div class="calendar-day completed">T</div>
+                        <div class="calendar-day completed">W</div>
+                        <div class="calendar-day completed">T</div>
+                        <div class="calendar-day completed">F</div>
+                        <div class="calendar-day completed">S</div>
+                        <div class="calendar-day today">S</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Loading State -->
+    <div class="loading-overlay hidden" id="loading-overlay">
+        <div class="loading-spinner"></div>
+        <p>Loading your dashboard...</p>
+    </div>
+
+    <!-- Firebase and Dashboard Logic -->
+    <script type="module">
+        import { auth, observeAuthState, getUserProfile } from '/src/firebase-config.js';
+
+        // Check authentication state
+        observeAuthState(async (user) => {
+            if (user) {
+                // User is signed in, load dashboard
+                await loadDashboard(user);
+            } else {
+                // User is not signed in, redirect to auth
+                window.location.href = 'auth.html';
+            }
+        });
+
+        async function loadDashboard(user) {
+            document.getElementById('loading-overlay').classList.remove('hidden');
+            
+            try {
+                // Get user profile data
+                const profileResult = await getUserProfile(user.uid);
+                
+                if (profileResult.success) {
+                    const userData = profileResult.data;
+                    
+                    // Update UI with user data
+                    document.getElementById('user-name').textContent = userData.displayName || 'User';
+                    document.getElementById('user-email').textContent = user.email;
+                    document.getElementById('welcome-name').textContent = userData.displayName?.split(' ')[0] || 'there';
+                    
+                    // Update user initials
+                    const initials = userData.displayName 
+                        ? userData.displayName.split(' ').map(n => n[0]).join('').toUpperCase()
+                        : 'U';
+                    document.getElementById('user-initials').textContent = initials;
+                    
+                    // Update progress stats
+                    updateProgressStats(userData);
+                }
+            } catch (error) {
+                console.error('Error loading dashboard:', error);
+            } finally {
+                document.getElementById('loading-overlay').classList.add('hidden');
+            }
+        }
+
+        function updateProgressStats(userData) {
+            // Update completion rate based on completed exercises
+            const completedCount = userData.completedExercises?.length || 0;
+            const totalExercises = 20; // Total number of exercises
+            const completionRate = Math.round((completedCount / totalExercises) * 100);
+            
+            document.getElementById('completion-rate').textContent = `${completionRate}%`;
+            document.getElementById('exercises-completed').textContent = completedCount;
+            
+            // Calculate streak (simplified for demo)
+            const currentStreak = calculateStreak(userData.completedExercises || []);
+            document.getElementById('current-streak').textContent = currentStreak;
+        }
+
+        function calculateStreak(completedExercises) {
+            // Simplified streak calculation
+            // In a real app, you'd calculate based on consecutive days
+            return Math.min(completedExercises.length * 2, 15);
+        }
+
+        // User menu toggle
+        document.getElementById('user-menu-toggle').addEventListener('click', () => {
+            document.getElementById('user-dropdown').classList.toggle('hidden');
+        });
+
+        // Close dropdown when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!e.target.closest('.user-menu')) {
+                document.getElementById('user-dropdown').classList.add('hidden');
+            }
+        });
+
+        // Logout functionality
+        document.getElementById('logout-link').addEventListener('click', async (e) => {
+            e.preventDefault();
+            try {
+                await auth.signOut();
+                window.location.href = 'index.html';
+            } catch (error) {
+                console.error('Error signing out:', error);
+            }
+        });
+    </script>
+    <script src="script.js"></script>
+</body>
+</html>

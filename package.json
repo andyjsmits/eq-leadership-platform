@@ -1,0 +1,40 @@
+{
+  "name": "eq-leadership-platform",
+  "version": "1.0.0",
+  "description": "EQ Leadership Platform - Emotional Intelligence toolkit for nonprofit and church leaders",
+  "main": "index.html",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "serve": "vite preview --port 3000",
+    "firebase:deploy": "firebase deploy",
+    "firebase:serve": "firebase serve"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/andyjsmits/eq-leadership-platform.git"
+  },
+  "keywords": [
+    "emotional-intelligence",
+    "leadership",
+    "nonprofit",
+    "church",
+    "eq-assessment",
+    "firebase",
+    "authentication"
+  ],
+  "author": "Andrew Smits",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/andyjsmits/eq-leadership-platform/issues"
+  },
+  "homepage": "https://github.com/andyjsmits/eq-leadership-platform#readme",
+  "dependencies": {
+    "firebase": "^10.14.1"
+  },
+  "devDependencies": {
+    "vite": "^5.4.19"
+  }
+}

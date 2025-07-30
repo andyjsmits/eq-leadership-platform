@@ -5,7 +5,12 @@
       "Bash(gh:*)",
       "Bash(git commit:*)",
       "Bash(git remote get-url:*)",
-      "Bash(git push:*)"
+      "Bash(git push:*)",
+      "Bash(ls:*)",
+      "Bash(npm init:*)",
+      "Bash(npm install)",
+      "Bash(npm install:*)",
+      "Bash(npm:*)"
     ],
     "deny": []
   }

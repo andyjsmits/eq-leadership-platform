@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign In - EQ Leadership Platform</title>
+    <meta name="description" content="Sign in to your EQ Leadership Platform account to access personalized exercises and track your progress.">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="auth-styles.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-brand">
+                <a href="index.html"><h2>EQ Leadership</h2></a>
+            </div>
+            <div class="nav-links">
+                <a href="index.html#how-it-works">How It Works</a>
+                <a href="index.html#pricing">Pricing</a>
+                <a href="eq-toolkit.html">My EQ Toolkit</a>
+                <a href="auth.html" class="active">Sign In</a>
+            </div>
+            <div class="mobile-menu-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Auth Section -->
+    <section class="auth-section">
+        <div class="container">
+            <div class="auth-container">
+                <div class="auth-tabs">
+                    <button class="auth-tab active" id="signin-tab">Sign In</button>
+                    <button class="auth-tab" id="signup-tab">Create Account</button>
+                </div>
+
+                <!-- Sign In Form -->
+                <div class="auth-form" id="signin-form">
+                    <h1>Welcome Back!</h1>
+                    <p>Continue your emotional intelligence journey</p>
+                    
+                    <form id="signin-form-element">
+                        <div class="form-group">
+                            <label for="signin-email">Email Address</label>
+                            <input type="email" id="signin-email" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="signin-password">Password</label>
+                            <input type="password" id="signin-password" required>
+                        </div>
+                        
+                        <button type="submit" class="auth-button">Sign In</button>
+                    </form>
+                    
+                    <div class="auth-divider">
+                        <span>or</span>
+                    </div>
+                    
+                    <button class="google-auth-button" id="google-signin">
+                        <span class="google-icon">G</span>
+                        Continue with Google
+                    </button>
+                    
+                    <div class="auth-links">
+                        <a href="#" id="forgot-password">Forgot your password?</a>
+                    </div>
+                </div>
+
+                <!-- Sign Up Form -->
+                <div class="auth-form hidden" id="signup-form">
+                    <h1>Join EQ Leadership</h1>
+                    <p>Start building your emotional intelligence today</p>
+                    
+                    <form id="signup-form-element">
+                        <div class="form-group">
+                            <label for="signup-name">Full Name</label>
+                            <input type="text" id="signup-name" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="signup-email">Email Address</label>
+                            <input type="email" id="signup-email" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="signup-password">Password</label>
+                            <input type="password" id="signup-password" required minlength="6">
+                            <small>At least 6 characters</small>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="signup-confirm">Confirm Password</label>
+                            <input type="password" id="signup-confirm" required>
+                        </div>
+                        
+                        <div class="form-group checkbox">
+                            <input type="checkbox" id="terms" required>
+                            <label for="terms">I agree to the <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a></label>
+                        </div>
+                        
+                        <button type="submit" class="auth-button">Create Account</button>
+                    </form>
+                    
+                    <div class="auth-divider">
+                        <span>or</span>
+                    </div>
+                    
+                    <button class="google-auth-button" id="google-signup">
+                        <span class="google-icon">G</span>
+                        Sign up with Google
+                    </button>
+                </div>
+
+                <!-- Success Messages -->
+                <div class="auth-message hidden" id="success-message">
+                    <div class="message-content">
+                        <h2>Welcome to EQ Leadership!</h2>
+                        <p>Your account has been created successfully. Redirecting to your dashboard...</p>
+                    </div>
+                </div>
+
+                <!-- Error Messages -->
+                <div class="auth-message error hidden" id="error-message">
+                    <div class="message-content">
+                        <h3>Authentication Error</h3>
+                        <p id="error-text">Something went wrong. Please try again.</p>
+                        <button id="close-error" class="close-button">Try Again</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Benefits Section -->
+            <div class="auth-benefits">
+                <h2>What You Get With Your Account</h2>
+                <div class="benefits-grid">
+                    <div class="benefit-item">
+                        <div class="benefit-icon">📊</div>
+                        <h3>Track Your Progress</h3>
+                        <p>Monitor your EQ development with detailed progress tracking across all four components.</p>
+                    </div>
+                    <div class="benefit-item">
+                        <div class="benefit-icon">🎯</div>
+                        <h3>Personalized Learning Path</h3>
+                        <p>Get customized exercise recommendations based on your EQ assessment results.</p>
+                    </div>
+                    <div class="benefit-item">
+                        <div class="benefit-icon">💾</div>
+                        <h3>Save Your Work</h3>
+                        <p>Never lose your insights. All your exercise responses and reflections are saved securely.</p>
+                    </div>
+                    <div class="benefit-item">
+                        <div class="benefit-icon">📈</div>
+                        <h3>View Your Growth</h3>
+                        <p>See how your emotional intelligence improves over time with detailed analytics.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <h3>EQ Leadership</h3>
+                    <p>Emotional intelligence development for nonprofit and church leaders.</p>
+                </div>
+                <div class="footer-links">
+                    <div class="footer-column">
+                        <h4>EQ Toolkit</h4>
+                        <a href="self-awareness-exercises.html">Self-Awareness</a>
+                        <a href="self-management-exercises.html">Self-Management</a>
+                        <a href="social-awareness-exercises.html">Social Awareness</a>
+                        <a href="relationship-management-exercises.html">Relationship Management</a>
+                    </div>
+                    <div class="footer-column">
+                        <h4>Platform</h4>
+                        <a href="index.html#how-it-works">How It Works</a>
+                        <a href="index.html#pricing">Pricing</a>
+                        <a href="#">EQ Assessment</a>
+                        <a href="#">Coaching</a>
+                    </div>
+                    <div class="footer-column">
+                        <h4>Support</h4>
+                        <a href="#">Help Center</a>
+                        <a href="#">Contact Us</a>
+                        <a href="#">Privacy Policy</a>
+                        <a href="#">Terms of Service</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 EQ Leadership Platform. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Firebase SDKs -->
+    <script type="module">
+        import { auth, signIn, signUp, signInWithGoogle, observeAuthState } from '/src/firebase-config.js';
+        
+        // Tab switching
+        document.getElementById('signin-tab').addEventListener('click', () => {
+            switchTab('signin');
+        });
+        
+        document.getElementById('signup-tab').addEventListener('click', () => {
+            switchTab('signup');
+        });
+        
+        function switchTab(tab) {
+            document.querySelectorAll('.auth-tab').forEach(t => t.classList.remove('active'));
+            document.querySelectorAll('.auth-form').forEach(f => f.classList.add('hidden'));
+            
+            if (tab === 'signin') {
+                document.getElementById('signin-tab').classList.add('active');
+                document.getElementById('signin-form').classList.remove('hidden');
+            } else {
+                document.getElementById('signup-tab').classList.add('active');
+                document.getElementById('signup-form').classList.remove('hidden');
+            }
+        }
+        
+        // Form submissions
+        document.getElementById('signin-form-element').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const email = document.getElementById('signin-email').value;
+            const password = document.getElementById('signin-password').value;
+            
+            const result = await signIn(email, password);
+            if (result.success) {
+                showMessage('success', 'Welcome back! Redirecting to your dashboard...');
+                setTimeout(() => {
+                    window.location.href = 'dashboard.html';
+                }, 2000);
+            } else {
+                showMessage('error', result.error);
+            }
+        });
+        
+        document.getElementById('signup-form-element').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const name = document.getElementById('signup-name').value;
+            const email = document.getElementById('signup-email').value;
+            const password = document.getElementById('signup-password').value;
+            const confirm = document.getElementById('signup-confirm').value;
+            
+            if (password !== confirm) {
+                showMessage('error', 'Passwords do not match');
+                return;
+            }
+            
+            const result = await signUp(email, password, name);
+            if (result.success) {
+                showMessage('success', 'Account created successfully! Redirecting to your dashboard...');
+                setTimeout(() => {
+                    window.location.href = 'dashboard.html';
+                }, 2000);
+            } else {
+                showMessage('error', result.error);
+            }
+        });
+        
+        function showMessage(type, text) {
+            document.getElementById('success-message').classList.add('hidden');
+            document.getElementById('error-message').classList.add('hidden');
+            
+            if (type === 'success') {
+                document.getElementById('success-message').classList.remove('hidden');
+            } else {
+                document.getElementById('error-text').textContent = text;
+                document.getElementById('error-message').classList.remove('hidden');
+            }
+        }
+        
+        document.getElementById('close-error').addEventListener('click', () => {
+            document.getElementById('error-message').classList.add('hidden');
+        });
+        
+        // Google sign-in handlers
+        document.getElementById('google-signin').addEventListener('click', async () => {
+            const result = await signInWithGoogle();
+            if (result.success) {
+                showMessage('success', 'Welcome! Redirecting to your dashboard...');
+                setTimeout(() => {
+                    window.location.href = 'dashboard.html';
+                }, 2000);
+            } else {
+                showMessage('error', result.error);
+            }
+        });
+        
+        document.getElementById('google-signup').addEventListener('click', async () => {
+            const result = await signInWithGoogle();
+            if (result.success) {
+                showMessage('success', 'Account created successfully! Redirecting to your dashboard...');
+                setTimeout(() => {
+                    window.location.href = 'dashboard.html';
+                }, 2000);
+            } else {
+                showMessage('error', result.error);
+            }
+        });
+    </script>
+    <script src="script.js"></script>
+</body>
+</html>
